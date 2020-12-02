@@ -1,7 +1,7 @@
 <!-- ######################     Main Navigation   ########################## -->
 <nav class="nav">
         <?php
-        if (PATH_PARTS['filename'] != 'LoginAndRegistration') {
+        if (PATH_PARTS['filename'] != 'form') {
             print '<ol>' . PHP_EOL . '<li ';
             if (PATH_PARTS['filename'] == 'index') {
                 print ' class="activePage" ';

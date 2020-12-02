@@ -11,7 +11,7 @@ $insertUsersQuery = "INSERT INTO `tblUsers` SET `Username` = ? , `Password` = ? 
 //Check Username Repeat
 $chkRepQuery = "SELECT * FROM `tblUsers` WHERE `Username`=?";
 //Confirm the registration by sending Email
-$confirmEmailQuery = "SELECT `regtime`,`Email` FROM `tblUsers` WHERE `tblUsers`.`UserId` = ? ";
+$confirmEmailQuery = "SELECT `regtime`,`Email`,`Username` FROM `tblUsers` WHERE `tblUsers`.`UserId` = ? ";
 $confirmedQuery = "UPDATE `tblUsers` SET `status` = 1 WHERE `tblUsers`.`UserId` = ?";
 
 /******************** tblUsersInfos ***********************/

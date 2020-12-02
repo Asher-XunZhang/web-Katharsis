@@ -1,6 +1,18 @@
 <?php
-include 'top.php';
-
+require_once 'lib/security.php';
+include_once 'lib/validation-functions.php';
+include_once 'lib/mail-message.php';
+include_once 'lib/constants.php';
+include_once 'lib/sql.php';
+include_once LIB_PATH . '/Connect-With-Database.php';
+/* As the setcookie function must requires that you place calls to
+ * this function prior to any output, including <html> and <head> tags
+ * as well as any whitespace. Therefore, I put the top.php at the end
+ * of these php codes. But the codes below still need the php files above,
+ * so I INCLUDE them here one by one.
+*/
+session_start();
+// Sanatize funcion from the text
 function getPData($field){
     if (!isset($_POST[$field])){
         $data='';
@@ -23,15 +35,30 @@ function getPData($field){
     return $data;
 }
 
+function getGData($field){
+    if (!isset($_GET[$field])){
+        $data="";
+    } else {
+        $data = trim($_GET[$field]);
+        $data = htmlspecialchars($data);
+    }
+    return $data;
+}
+
+
+
+
 print  PHP_EOL . '<!-- SECTION: 1a. debugging setup -->' . PHP_EOL;
 //print '<p>POST Array:</p><pre>';
 //print_r($_POST);
 //print '</pre>';
 print PHP_EOL . '<!-- SECTION: 1b security -->' . PHP_EOL;
-$thisURL = $domain . $phpSelf;
+$thisURL = DOMAIN . PHP_SELF;
 print PHP_EOL . '<!-- SECTION: 1c form variables -->' . PHP_EOL;
-$Login_username = "";
-$Login_password = "";
+/**Expiration of Username**/
+$expireU=time()+60*60*24*30;//30days
+/**Expiration of Password**/
+$expireP=time()+60*60;//1hour
 
 $username="";
 $password="";
@@ -46,6 +73,16 @@ $gender="";
 $telephone="";
 $ssn="";
 $address="";
+
+$usernameInfos ="<li> Start with a letter;</li>".PHP_EOL;
+$usernameInfos .="<li> 5-16 bytes;</li>".PHP_EOL;
+$usernameInfos .="<li> Only allow letters, numbers and underscores</li>".PHP_EOL;
+
+$passwordInfos = "<li> Contain at least 1 upper case letter</li>".PHP_EOL;
+$passwordInfos .= "<li> Contain at least 1 lower case letter</li>".PHP_EOL;
+$passwordInfos .= "<li> Contain at least 1 number or special character</li>".PHP_EOL;
+$passwordInfos .= "<li> Contain at least 8 characters in length</li>".PHP_EOL;
+
 
 print PHP_EOL . '<!-- SECTION: 1d form error flags -->' . PHP_EOL;
 $usernameERROR =false;
@@ -100,7 +137,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
                 $errorMsg[] = "Please enter your Username";
                 $usernameERROR = true;
             }elseif (!verifyUsername($username)){
-                $errorMsg[] = "Your Username is invalid. Please Re-Enter a username that follows the Valid Username Rules.";
+                $errorMsg[] = "Your Username is invalid. Please follow the Tips.";
                 $usernameERROR = true;
             }else{
                 if ($thisDatabaseReader->querySecurityOk($chkRepQuery, 1,0,0,0,0)) {
@@ -117,7 +154,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
                 $errorMsg[] = "Please enter your Password";
                 $passwordERROR = true;
             }elseif (!checkStrongPassword($password)){
-                $errorMsg[] = "Your Password is invalid. Please Re-Enter a password that follows the Strong Password Rules.";
+                $errorMsg[] = "Your Password is invalid. Please follow the Tips.";
                 $passwordERROR = true;
             }elseif ($password != $confirmpwd){
                 $errorMsg[] = "The two passwords you entered are inconsistent.Please Check and Re-enter.";
@@ -137,13 +174,15 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
             if(!(($firstname=="")&&($lastname==""))) {
                 if (!($middlename == "")) {
                     if (!verifyEnglishName($middlename)) {
-                        $errorMsg[] = "Incorrect Middle Name";
+                        $errorMsg[] = "Incorrect Name";
                         $nameERROR = true;
                     }
                 }
                 if (!(verifyEnglishName($firstname) && verifyEnglishName($lastname))) {
-                    $errorMsg[] = "Incorrect Name";
-                    $nameERROR = true;
+                    if(!$nameERROR){
+                        $errorMsg[] = "Incorrect Name";
+                        $nameERROR = true;
+                    }
                 }
             }
 
@@ -188,6 +227,8 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
                         $inCusSQL = $thisDatabaseWriter->sanitizeQuery($insertUsersQuery);
                         $results = $thisDatabaseWriter->insert($insertUsersQuery, $data);
                         $primaryKey = $thisDatabaseWriter->lastInsert();
+                        setcookie("Username",$username,$expireU);
+                        setcookie("Password",$password,$expireP);
                     }
 
                     $dataEntered = $thisDatabaseWriter->db->commit();
@@ -240,9 +281,9 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
                     $messageA .= '<p>Please check your mail for instructions.</p>';
 
                     $messageB = "<p>Click this link to confirm your registration: ";
-                    $messageB .= '<a href="http:' . DOMAIN . PATH_PARTS["dirname"] . '/LoginAndRegistration.php?Token=' . $key1 . '&amp;Id=' . $key2 . '">Confirm Registration</a></p>';
+                    $messageB .= '<a href="http:' . DOMAIN . PATH_PARTS["dirname"] . '/confirmation.php?Token=' . $key1 . '&amp;Id=' . $key2 . '">Confirm Registration</a></p>';
                     $messageB .= "<p>or copy and paste this url into a web browser: ";
-                    $messageB .= 'http:' . DOMAIN . PATH_PARTS["dirname"] . '/LoginAndRegistration.php?Token=' . $key1 . '&amp;Id=' . $key2 . "</p>";
+                    $messageB .= 'http:' . DOMAIN . PATH_PARTS["dirname"] . '/confirmation.php?Token=' . $key1 . '&amp;Id=' . $key2 . "</p>";
 
 
                     $messageC .= "<p><b>Email Address:</b><i>   " . $email . "</i></p>";
@@ -268,73 +309,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         }//end if form is registration
     }//end if any form is submitted
 }//end if receive any POST
-elseif($_SERVER["REQUEST_METHOD"] == 'GET'){
-    if((isset($_GET["Token"]))&&(isset($_GET["Id"]))){
-        $keyTime = $_GET["Token"];  // I did not sanitize in case of special characters were in the hased value
-        $keyId = (int) htmlentities($_GET["Id"], ENT_QUOTES, "UTF-8");
-
-        $IdArr = array($keyId);
-
-        $confirmresults = "";
-        $regtime = "";
-
-        $statusresults = "";
-        $sentemail = "";
-        $statusUpdated = false;
-
-        $AdminMessage = "";
-        $ConfirmCheckMessage="";
-        $failedMessage = "<p>I am sorry but this project cannot be confirmed at this time. Please email to ". ADMIN_EMAIL ." for help in resolving this matter.</p>";
-
-        if ($thisDatabaseReader->querySecurityOk($confirmEmailQuery)) {
-            $confirmEmailQuery = $thisDatabaseReader->sanitizeQuery($confirmEmailQuery);
-            $confirmresults = $thisDatabaseReader->select($confirmEmailQuery, $IdArr);
-        }
-        if ($confirmresults) {
-            $regtime = $confirmresults[0]["regtime"];
-            $sentemail = $confirmresults[0]["Email"];
-        }
-        if (password_verify($regtime, $keyTime)) {
-            if ($thisDatabaseWriter->querySecurityOk($confirmedQuery,1)) {
-                $confirmedQuery = $thisDatabaseWriter->sanitizeQuery($confirmedQuery);
-                $statusresults = $thisDatabaseWriter->update($confirmedQuery, $IdArr);
-            }
-            //##############################################################
-            // notify admin
-
-            if (!$statusresults) {
-                $AdminMessage .= '<h1>Confirmed failed: Look at Registration Id: ' . $keyId . '</h1>';
-                $to = ADMIN_EMAIL;
-                $cc = "";
-                $bcc = "";
-                $from = 'KATHARSIS <xzhang@uvm.edu>';
-                $subject = "Registration Confirmation Failed";
-                $mailed = sendMail($to, $cc, $bcc, $from, $subject, $AdminMessage);
-            }
-
-            //##############################################################
-            // notify user
-            if ($statusresults) {
-                $Login_username=$username;
-                $Login_password=$password;
-                $to = $sentemail;
-                $cc = "";
-                $bcc = "";
-                $from = 'KATHARSIS <xzhang@uvm.edu>';
-                $subject = "Katharsis E-shop Account Registration Confirmed";
-                $ConfirmCheckMessage = "<p>Thank you for taking the time to confirm your registration!</p>";
-                $ConfirmCheckMessage .= "<p>You can log into your account now!</p>";
-                $mailed = sendMail($to, $cc, $bcc, $from, $subject, $ConfirmCheckMessage);
-            } else {
-                // update failed
-                $ConfirmCheckMessage .= $failedMessage;
-            }
-        }else{
-            $ConfirmCheckMessage .= $failedMessage;
-        }
-        print "<h2 class='confirmed-content'>".$ConfirmCheckMessage."</h2>";
-    }//end if receive for confirmation
-}//end if receive any Get
+include 'top.php';
 ?>
 
 <main class="body<?php
@@ -354,26 +329,27 @@ elseif($_SERVER["REQUEST_METHOD"] == 'GET'){
             print "<p>Please check your email for confirmation.</p>";
             print "</section>";
             print "</article>";
+            $btnSubmit = "Login";
         } else {
-            if($errorMsg){
-                print "<article class='mistakes-window pop-up-window'>".PHP_EOL;
-                print "<section class='mistakes-content'>".PHP_EOL;
-                print "<section class='mistakes-header'>".PHP_EOL;
-                print '<h2>Warning!</h2>'.PHP_EOL;
-                print "</section>".PHP_EOL;
-                print "<section class='mistakes-body'>".PHP_EOL;
-                print '<p>Your form has the following mistakes that need to be fixed.</p>'.PHP_EOL;
-                print "<ol id='mistakes'>".PHP_EOL;
+            if ($errorMsg) {
+                print "<article class='mistakes-window pop-up-window'>" . PHP_EOL;
+                print "<section class='mistakes-content'>" . PHP_EOL;
+                print "<section class='mistakes-header'>" . PHP_EOL;
+                print '<h2>Warning!</h2>' . PHP_EOL;
+                print "</section>" . PHP_EOL;
+                print "<section class='mistakes-body'>" . PHP_EOL;
+                print '<p>Your form has the following mistakes that need to be fixed.</p>' . PHP_EOL;
+                print "<ol class='mistakes'>" . PHP_EOL;
                 foreach ($errorMsg as $err) {
-                    print "<li id='mistake'>" . $err . "</li>\n";
+                    print "<li class='mistake'>" . $err . "</li>\n";
                 }
-                print "</ol>".PHP_EOL;
-                print "</section>".PHP_EOL."<section class='mistakes-footer'>";
+                print "</ol>" . PHP_EOL;
+                print "</section>" . PHP_EOL . "<section class='mistakes-footer'>";
                 print "<p>|--Please click on the outer shadow to close this window--|</p>";
-                print "</section>".PHP_EOL."</section>".PHP_EOL;
-                print "</article>".PHP_EOL;
+                print "</section>" . PHP_EOL . "</section>" . PHP_EOL;
+                print "</article>" . PHP_EOL;
             }
-
+        }
             print PHP_EOL . '<!-- SECTION 3c html Form -->' . PHP_EOL;
             ?>
     <article class="mainbody middle <?php
@@ -381,40 +357,75 @@ elseif($_SERVER["REQUEST_METHOD"] == 'GET'){
             echo 'mistakes'." ".$btnSubmit;
         }?>">
         <!--- Login in form --->
-        <form class="form-box front" action="LoginAndRegistration.php" method="POST">
+        <form class="form-box front" action="login.php" method="POST">
             <h1>Login</h1>
-            <input type="text" name="username" value="<?php echo $Login_username ?>" placeholder="Username" required />
-            <input type="password" name="password"  placeholder="Password" required />
-            <input type="submit" name="btnSubmit" value="Login" />
+            <input type="text"
+                   name="username"
+                   value="<?php
+                   if (isset($_COOKIE["Username"])){
+                       echo $_COOKIE["Username"];
+                   }?>"
+                   placeholder="Username"
+                   required
+            />
+
+            <input type="password"
+                   name="password"
+                   value="<?php
+                   if (isset($_COOKIE["Password"])){
+                       echo $_COOKIE["Password"];
+                   }?>"
+                   placeholder="Password"
+                   required
+            />
+
+            <input type="submit"
+                   name="btnSubmit"
+                   value="Login"
+            />
+
             <p style="margin-top: 60px">If you don't have account.Please</p>
             <p>Click here to <a class="signup" onclick="signup()">Sign Up</a></p>
         </form>
 
         <!--    - Sign up form --->
-        <form class="form-box back" action="LoginAndRegistration.php" method="POST">
+        <form class="form-box back" action="form.php" method="POST">
             <h1>Register</h1>
             <fieldset class="regfieldset">
                 <fieldset class="required">
                     <legend>Required</legend>
-                    <input
-                        <?php if($usernameERROR) print "id='mistake' onchange='revise(this)'";?>
-                        type="text"
-                        name="username"
-                        value="<?php if(!$usernameERROR) echo $username;?>"
-                        placeholder="Set Username"
-                    required/>
+                    <section>
+                        <input
+                            <?php if($usernameERROR) print "class='input-mistake' onchange='revise(this)'";?>
+                            onfocus="showtips(1)"
+                            onblur="hiddentips(1)"
+                            type="text"
+                            name="username"
+                            value="<?php if(!$usernameERROR) echo $username;?>"
+                            placeholder="Set Username"
+                        required/>
+                        <section class="tooltip tip1">
+                            <ul class="tooltiptext tiptext1">Tips<?php echo $usernameInfos; ?></ul>
+                        </section>
+                    </section>
 
+                    <section>
+                        <input
+                            <?php if($passwordERROR) print "class='input-mistake' onchange='revise(this)'";?>
+                            onfocus="showtips(2)"
+                            onblur="hiddentips(2)"
+                            type="password"
+                            name="first-password"
+                            value="<?php if(!$passwordERROR) echo $password;?>"
+                            placeholder="Set Password"
+                        required/>
+                        <section class="tooltip tip2">
+                            <ul class="tooltiptext tiptext2">Tips<?php echo $passwordInfos; ?></ul>
+                        </section>
+                    </section>
 
                     <input
-                        <?php if($passwordERROR) print "id='mistake' onchange='revise(this)'";?>
-                        type="password"
-                        name="first-password"
-                        value="<?php if(!$passwordERROR) echo $password;?>"
-                        placeholder="Set Password"
-                    required/>
-
-                    <input
-                        <?php if($passwordERROR) print "id='mistake' onchange='revise(this)'";?>
+                        <?php if($passwordERROR) print "class='input-mistake' onchange='revise(this)'";?>
                         type="password"
                         name="confirm-password"
                         value="<?php if(!$passwordERROR) echo $confirmpwd;?>"
@@ -422,7 +433,7 @@ elseif($_SERVER["REQUEST_METHOD"] == 'GET'){
                     required/>
 
                     <input
-                        <?php if($emailERROR) print "id='mistake' onchange='revise(this)'";?>
+                        <?php if($emailERROR) print "class='input-mistake' onchange='revise(this)'";?>
                         type="email"
                         name="email"
                         value="<?php
@@ -439,7 +450,7 @@ elseif($_SERVER["REQUEST_METHOD"] == 'GET'){
                     <fieldset class="name">
                         <legend>Name:</legend>
                         <input
-                            <?php if($nameERROR) print "id='mistake' onchange='revise(this)'";?>
+                            <?php if($nameERROR) print "class='input-mistake' onchange='revise(this)'";?>
                             type="text"
                             name="firstname"
                             value="<?php if(!$nameERROR) echo $firstname;?>"
@@ -447,7 +458,7 @@ elseif($_SERVER["REQUEST_METHOD"] == 'GET'){
                         />
 
                         <input
-                            <?php if($nameERROR) print "id='mistake' onchange='revise(this)'";?>
+                            <?php if($nameERROR) print "class='input-mistake' onchange='revise(this)'";?>
                             type="text"
                             name="middlename"
                             value="<?php if(!$nameERROR) echo $middlename;?>"
@@ -455,7 +466,7 @@ elseif($_SERVER["REQUEST_METHOD"] == 'GET'){
                         />
 
                         <input
-                            <?php if($nameERROR) print "id='mistake' onchange='revise(this)'"?>
+                            <?php if($nameERROR) print "class='input-mistake' onchange='revise(this)'"?>
                             type="text"
                             name="lastname"
                             value="<?php if(!$nameERROR) echo $lastname;?>"
@@ -465,7 +476,7 @@ elseif($_SERVER["REQUEST_METHOD"] == 'GET'){
                     </fieldset>
 
                     <p class="gender">Gender:</p>
-                    <input id=female type="radio" name="gender" value="female"
+                    <input id="female" type="radio" name="gender" value="female"
                         <?php if($gender=="female") echo 'checked'?> />
                     <label for="female">Female</label>
                     <input id="male" type="radio" name="gender" value="male"
@@ -476,7 +487,7 @@ elseif($_SERVER["REQUEST_METHOD"] == 'GET'){
                     <label for="prefer">Prefer Not to Say</label>
 
                     <input
-                        <?php if($telephoneERROR) print "id='mistake' onchange='revise(this)'"?>
+                        <?php if($telephoneERROR) print "class='input-mistake' onchange='revise(this)'"?>
                         type="tel"
                         name="telephone"
                         value="<?php if(!$telephoneERROR) echo $telephone;?>"
@@ -484,7 +495,7 @@ elseif($_SERVER["REQUEST_METHOD"] == 'GET'){
                     />
 
                     <input
-                        <?php if($ssnERROR) print "id='mistake' onchange='revise(this)'"?>
+                        <?php if($ssnERROR) print "class='input-mistake' onchange='revise(this)'"?>
                         type="text"
                         name="SSN"
                         value="<?php if(!$ssnERROR) echo $ssn ?>"
@@ -498,9 +509,8 @@ elseif($_SERVER["REQUEST_METHOD"] == 'GET'){
             <p class="comment">Have a account ? You can Click here to <a class="login" onclick="login()">Log in</a></p>
         </form>
     </article>
-    <?php };?>
 </main>
 <?php
-include "footer.php";
+include_once "footer.php";
 print "</body>".PHP_EOL."</html>";
 ?>

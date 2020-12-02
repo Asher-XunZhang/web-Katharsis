@@ -1,67 +1,446 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+html{
+    width: 100%;
+    height: 100%;
+}
+body{
+    height: 100%;
+    font-family: 'Noto Sans JP', sans-serif;
+    background-image: linear-gradient(120deg,#3498db,#2ecc71);
+    width: 100%;
+}
+/******************** header.php  **************************/
+.header{
+    padding: 0;
+    margin: 0;
+    border: 0;
+    text-align: center;
+    display: block;
+    position: absolute;
+    height: 100px;
+    width: 100%;
+}
+.header .ico{
+    width: 4em;
+    padding: 0;
+    margin: 0;
+    border: none;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.header .text{
+    text-decoration: none;
+    background-image: linear-gradient(150deg, #ffe2b6, #fea4a6);
+    margin: 0;
+    padding: 0;
+    border: none;
+    top: 28px;
+    left: 40px;
+    text-align: center;
+    color: transparent;
+    -webkit-background-clip: text;
+    font-size: 50px;
+    position: absolute;
+}
 
-
-/****************** Nav ******************/
-
+/************************ nav ************************/
 .nav{
     text-align: left;
 }
 
-/****************** Header ******************/
+/**********************   form.php     ***********************/
+/********************Body********************/
 
-.header{
+#form main{
+    width: 100%;
+    height: 570px;
+    position: absolute;
+    top: 100px;
+}
+#form .mainbody {
+    height: 440px;
+    width: 400px;
+    display: block;
+}
+#form .middle {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+/**************** form ******************/
+#form .form-box{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    background: darkcyan;
+    text-align: center;
+    border-radius: 40px;
+    top: 0px;
+    left: 0px;
+    display: block;
+}
+
+/*******************fieldset***************/
+#form legend {
+    color: white;
+    font-size: 25px;
+}
+
+#form .form-box h1{
+    color: white;
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 35px;
+    padding: 10px;
+}
+
+#form .form-box input[type="text"],input[type="password"],
+input[type="email"],input[type="tel"],textarea{
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #3498db;
+    padding: 14px 10px;
+    width: 250px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+}
+#form .required input[type="text"],input[type="password"],input[type="email"]{
+    height: 20px;
+    border-radius: 25px;
+    margin: 38px auto;
+    display: block;
+}
+#form .required .tooltip{
+    display: none;
+    z-index: 1;
+    height: 110px;
+    width: 320px;
+    position: absolute;
+    top: 130px;
+    padding: 0px 10px;
+}
+
+#form .required .tooltip .tooltiptext{
+    height: 110px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    border-radius: 15px;
+    padding: 10px 20px 35px 20px;
+    position: absolute;
+}
+#form .required .tooltip .tooltiptext li{
+    font-family: 'Noto Sans JP', sans-serif;
+    text-align: left;
+    margin: 5px 20px;
+}
+#form .required section .tooltip.tip2 {
+    top: 220px;
+}
+#form .required .tip2 .tooltiptext.tiptext2 {
+    height: 200px;
+    padding: 10px 10px 10px 20px;
+}
+
+#form .optional input[type="tel"], input[name="SSN"], textarea {
+    margin: 22px auto;
+}
+
+::placeholder{
+    font-family: 'Noto Sans JP', sans-serif;
+    text-align: center;
+    color: white;
+}
+#form label{
+    color: #ACD6FF;
+}
+
+#form .form-box input[type="text"]:focus, input[type="password"]:focus
+, input[type="email"]:focus, input[type="tel"]:focus,textarea:focus{
+    width: 280px;
+    border-color: #2ecc71;
+}
+
+#form .form-box input[type="radio"]:checked + label{
+    color: #2ecc71;
+}
+
+#form .form-box input[type="submit"]{
+    background: none;
+    display: block;
+    text-align: center;
+    border: 2px solid #2ecc71;
+    padding: 14px 40px;
+    width: 200px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer;
+    font-size: 16px;
+}
+#form .form-box input[type="submit"]:hover{
+    background: #2ecc71;
+}
+
+#form .form-box.front input[type="submit"]{
+    margin: 20px auto;
+}
+#form .form-box.back input[type="submit"]{
+    position: absolute;
+    left: 265px;
+    bottom: 50px;
+}
+
+#form .input-mistake{
+    border-color: salmon;
+}
+#form .required input.input-mistake[type="text"] {
+    border-color: salmon;
+}
+#form .optional input.input-mistake[type="text"] {
+    border-color: salmon;
+}
+
+#form .input-mistake:focus{
+    border-color: #2ecc71;
+}
+
+
+#form .regfieldset {
+    display: flex;
+    outline: none;
+    border: none;
+    left: 50%;
+}
+#form .regfieldset fieldset{
+    outline:none;
+    border: none;
+    width: 100%;
+}
+
+#form fieldset.name {
+    margin: 0;
+    display: inline-flex;
+    padding: 0px 0px 0px 33px;
+}
+
+#form .name legend{
+    padding: 5px 11px;
+    color: white;
+    text-align: left;
+    font-size: 18px;
+}
+#form .name input[type="text"]:focus {
+    width: 100px;
+}
+#form .name input[type="text"] {
+    width: 50px;
+    margin: 0px 0px 0px 15px;
+}
+
+#form .gender{
+    padding: 0px 44px;
+    margin: 0;
+    color: white;
     text-align: left;
 }
-
-
-
-
-/****************** Top ***********************/
-
-
-
-
-/****************** index ***********************/
-h1{
-    text-align: center;
+#form fieldset.optional {
+    position: absolute;
+    display: block;
+    right: 20px;
+    width: 350px;
+    height: 410px;
+    top: 60px;
 }
 
-/********** table ***********/
-table {
-    border: 5px solid gold;
+#form fieldset.required {
+    position: absolute;
+    display: block;
+    left: 20px;
+    top: 60px;
+    width: 350px;
+    height: 410px;
+}
+/*********************flip*********************/
+#form .front {
+    transform: rotateY(0deg);
+}
+
+#form .back {
+    transform: rotateY(-180deg) perspective(600px);
+}
+
+#form .front,.back {
+    backface-visibility: hidden;
+    transition: 0.5s linear;
+}
+
+#form .middle-flip .front {
+    transform: rotateY(180deg) perspective(600px);
+}
+#form .middle-flip .back {
+    transform: rotateY(0deg) perspective(600px);
+}
+#form .optional p{
+    font-size: 18px;
+}
+#form p.comment {
+    position: absolute;
+    left: 29vh;
+    text-align: center;
+    bottom: 20px;
+}
+/****************Confirm Window****************/
+#form section.confirm-content {
+    height: 500px;
+    width: 600px;
     margin: auto;
-    padding: .5em;
+    padding: 40px;
+    background-image: linear-gradient(90deg,#3498db,#2ecc71);
+    border-radius: 40px;
+}
+#form .confirm-content h2 {
+    font-size: 28px;
+    text-align: left;
+    color: wheat;
+    margin: 25px auto;
+}
+/**************Mistakes Window**************/
+#form article.pop-up-window {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    padding-top: 100px;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
     text-align: center;
 }
-tr:nth-child(odd) {
-    background-color: #FFB6C1;
-}
-tr:nth-child(even){
-    background-color: #E1FFFF;
+
+#form .mistakes-content{
+    background-image: linear-gradient(90deg,#3498db,#2ecc71);
+    margin: auto;
+    width: 700px;
+    height: 570px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.5s;
+    border-radius: 40px;
 }
 
-tr:hover{
-    background-color: #FFDEAD;
+#form .mistakes-header {
+    display: block;
+    line-height: 40px;
+    padding: 30px 30px 0px 30px;
+    color: white;
+    text-align: left;
 }
-td {
-    text-align: center;
+#form .mistakes-body{
+    padding: 20px 10px;
+    font-size: 18px;
+    height: 400px;
+}
+#form .mistakes-body p {
+    font-size: 24px;
+    text-align: left;
+    padding: 0px 0px 0px 20px;
+}
+#form ol {
+    padding: 0px 0px 0px 45px;
+    text-align: left;
+}
+#form li.mistake{
+    color: #fdf0c3;
+    font-size: 20px;
+    font-weight: 800;
+    margin: 15px 0px 10px 0px;
 }
 
+#form .mistakes-footer{
+    display: block;
+    line-height: 40px;
+    padding: 0px 0px 10px 0px;
+    color: white;
+}
+#form .mistakes-footer p {
+    font-style: italic;
+}
 
-#lab5 .repeat{
-    background-color: gold;
+/*************************** confirmation.php *******************************/
+#confirmation main {
+    height: 400px;
+    margin: 100px 100px 0px 100px;
 }
-#lab5 .remind{
-    background-color: gold;
+#confirmation article.confirmed-content {
+    height: 400px;
+    z-index: 1;
+    display: block;
+    background-image: linear-gradient(90deg,#3498db,#2ecc71);
+    margin: auto;
+    width: 700px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.5s;
+    border-radius: 40px;
 }
-#lab5 .correct{
-    background-color: lightgreen;
+#confirmation article h1 {
+    margin: 30px 20px 0px 20px;
+    padding: 40px 20px;
+    color: white;
+    font-size: 30px;
 }
-#lab5 .mistake{
-    background-color: red;
+#confirmation article p {
+    margin: 15px 50px;
+    color: white;
+    font-size: 20px;
+}
+#confirmation article a {
+    text-decoration: none;
+    color: yellow;
+    font-size: 20px;
+    padding: 20px;
+    float: right;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    border-radius: 40px;
+    /* background-image: linear-gradient(150deg, #ffe2b6, #fea4a6); */
 }
 
 /****************** Footer ******************/
 .footer{
+    width: 100%;
+    height: 30px;
+    position: absolute;
+    bottom: 0px;
+}
+.footer a{
+    text-decoration: none;
+}
+
+
+
+p {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    color: white;
+    display: block;
     text-align: center;
-    bottom: 100ex;
+}
+
+a {
+    color: aqua;
+    cursor: pointer;
 }
