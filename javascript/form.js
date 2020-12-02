@@ -19,6 +19,16 @@ function login() {
 function revise(obj){
     obj.style.border = "2px solid #3498db";
 };
+function showtips(num){
+    $tip = "tip"+[num];
+    var tip = (document.getElementsByClassName($tip))[0];
+    tip.style.display = "block";
+}
+function hiddentips(num){
+    $tip = "tip"+[num];
+    var tip = (document.getElementsByClassName($tip))[0];
+    tip.style.display = "none";
+}
 window.onload = function () {
     var main = (document.getElementsByTagName("main"))[0];
     if(main.classList.contains("confirm")){

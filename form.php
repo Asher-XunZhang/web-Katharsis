@@ -10,8 +10,9 @@ include_once LIB_PATH . '/Connect-With-Database.php';
  * as well as any whitespace. Therefore, I put the top.php at the end
  * of these php codes. But the codes below still need the php files above,
  * so I INCLUDE them here one by one.
-*/
+ */
 session_start();
+
 // Sanatize funcion from the text
 function getPData($field){
     if (!isset($_POST[$field])){
@@ -44,9 +45,6 @@ function getGData($field){
     }
     return $data;
 }
-
-
-
 
 print  PHP_EOL . '<!-- SECTION: 1a. debugging setup -->' . PHP_EOL;
 //print '<p>POST Array:</p><pre>';

@@ -1,4 +1,5 @@
 <?php
+include_once "top.php";
 print "<h2>Successful!!!!</h2>"
 
 
