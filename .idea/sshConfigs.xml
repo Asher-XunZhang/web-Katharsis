@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig authType="PASSWORD" host="w3.uvm.edu" id="b03d5231-e542-42f3-a1da-1ca1ad966100" port="22" nameFormat="DESCRIPTIVE" username="xzhang" />
+    </configs>
+  </component>
+</project>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="19ceabc0-9cc5-49bf-a207-1c8c286c09ce" name="Final Project">
+        <fileTransfer rootFolder="/users/x/z/xzhang/www-root/cs148" accessType="SFTP" host="w3.uvm.edu" port="22" sshConfigId="b03d5231-e542-42f3-a1da-1ca1ad966100" sshConfig="xzhang@w3.uvm.edu:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

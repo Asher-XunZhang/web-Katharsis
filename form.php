@@ -1,51 +1,6 @@
 <?php
-require_once 'lib/security.php';
-include_once 'lib/validation-functions.php';
-include_once 'lib/mail-message.php';
-include_once 'lib/constants.php';
-include_once 'lib/sql.php';
-include_once LIB_PATH . '/Connect-With-Database.php';
-/* As the setcookie function must requires that you place calls to
- * this function prior to any output, including <html> and <head> tags
- * as well as any whitespace. Therefore, I put the top.php at the end
- * of these php codes. But the codes below still need the php files above,
- * so I INCLUDE them here one by one.
- */
 session_start();
-
-// Sanatize funcion from the text
-function getPData($field){
-    if (!isset($_POST[$field])){
-        $data='';
-    }elseif(is_array($_POST[$field])){
-        $data = array();
-        if (!empty($_POST[$field])){
-            foreach ($_POST[$field] as $f){
-                array_push($data, htmlspecialchars(trim($f)));
-            }
-        }
-    } else {
-        if ($field == "email") {
-            $data = filter_var($_POST[$field], FILTER_SANITIZE_EMAIL);
-        } else {
-            $data = trim($_POST[$field]);
-            $data = htmlspecialchars($data);
-        }
-
-    }
-    return $data;
-}
-
-function getGData($field){
-    if (!isset($_GET[$field])){
-        $data="";
-    } else {
-        $data = trim($_GET[$field]);
-        $data = htmlspecialchars($data);
-    }
-    return $data;
-}
-
+include_once "top.php";
 print  PHP_EOL . '<!-- SECTION: 1a. debugging setup -->' . PHP_EOL;
 //print '<p>POST Array:</p><pre>';
 //print_r($_POST);
@@ -53,11 +8,6 @@ print  PHP_EOL . '<!-- SECTION: 1a. debugging setup -->' . PHP_EOL;
 print PHP_EOL . '<!-- SECTION: 1b security -->' . PHP_EOL;
 $thisURL = DOMAIN . PHP_SELF;
 print PHP_EOL . '<!-- SECTION: 1c form variables -->' . PHP_EOL;
-/**Expiration of Username**/
-$expireU=time()+60*60*24*30;//30days
-/**Expiration of Password**/
-$expireP=time()+60*60;//1hour
-
 $username="";
 $password="";
 $confirmpwd="";
@@ -225,8 +175,6 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
                         $inCusSQL = $thisDatabaseWriter->sanitizeQuery($insertUsersQuery);
                         $results = $thisDatabaseWriter->insert($insertUsersQuery, $data);
                         $primaryKey = $thisDatabaseWriter->lastInsert();
-                        setcookie("Username",$username,$expireU);
-                        setcookie("Password",$password,$expireP);
                     }
 
                     $dataEntered = $thisDatabaseWriter->db->commit();
@@ -281,9 +229,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
                     $messageB = "<p>Click this link to confirm your registration: ";
                     $messageB .= '<a href="http:' . DOMAIN . PATH_PARTS["dirname"] . '/confirmation.php?Token=' . $key1 . '&amp;Id=' . $key2 . '">Confirm Registration</a></p>';
                     $messageB .= "<p>or copy and paste this url into a web browser: ";
-                    $messageB .= 'http:' . DOMAIN . PATH_PARTS["dirname"] . '/confirmation.php?Token=' . $key1 . '&amp;Id=' . $key2 . "</p>";
-
-
+                    $messageB .= 'http:' . BASE_PATH . '/confirmation.php?Token=' . $key1 . '&amp;Id=' . $key2 . "</p>";
                     $messageC .= "<p><b>Email Address:</b><i>   " . $email . "</i></p>";
 
                     //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -307,7 +253,6 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         }//end if form is registration
     }//end if any form is submitted
 }//end if receive any POST
-include 'top.php';
 ?>
 
 <main class="body<?php

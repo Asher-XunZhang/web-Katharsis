@@ -9,7 +9,8 @@ $path_parts = pathinfo($phpSelf);
 //make sure you have no blank lines before or after this php block
 
 $css_path = "./css/custom.css";
-
+require_once 'lib/security.php';
+include_once 'lib/constants.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,12 +34,13 @@ $css_path = "./css/custom.css";
         <link rel="stylesheet" href=<?php print $css_path; ?> type="text/css" media="screen">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;900&display=swap" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script type="text/javascript" src='<?php
-            print "./javascript/";
             if($path_parts['filename'] == "form") {
-                print "form";
-            }
-            print ".js";
+                print JS_PATH."/form.js";
+            }elseif($path_parts['filename'] == "homepage"){
+                print JS_PATH."/homepage.js";
+            };
         ?>' ></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -62,13 +64,11 @@ $css_path = "./css/custom.css";
         //
         // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
         print PHP_EOL . '<!-- begin including libraries -->' . PHP_EOL;
-        require_once 'lib/security.php';
-        include_once 'lib/validation-functions.php';
-        include_once 'lib/mail-message.php';
-        include_once 'lib/constants.php';
-        include_once 'lib/sql.php';
+        include_once LIB_PATH .'/validation-functions.php';
+        include_once LIB_PATH .'/mail-message.php';
+        include_once LIB_PATH .'/sql.php';
+        include_once LIB_PATH . '/sanatize.php';
         include_once LIB_PATH . '/Connect-With-Database.php';
-
         print  PHP_EOL . '<!-- finished including libraries -->' . PHP_EOL;
         ?>
     </head>

@@ -2,15 +2,16 @@
     padding: 0;
     margin: 0;
 }
-html{
-    width: 100%;
-    height: 100%;
-}
+/*html{*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*}*/
 body{
-    height: 100%;
+    /*height: 100%; */
+    min-height: 100vh;
     font-family: 'Noto Sans JP', sans-serif;
     background-image: linear-gradient(120deg,#3498db,#2ecc71);
-    width: 100%;
+    /* width: 100%;*/
 }
 /******************** header.php  **************************/
 .header{
@@ -19,7 +20,7 @@ body{
     border: 0;
     text-align: center;
     display: block;
-    position: absolute;
+    /* position: absolute; */
     height: 100px;
     width: 100%;
 }
@@ -48,9 +49,86 @@ body{
 }
 
 /************************ nav ************************/
-.nav{
-    text-align: left;
+#nav, .menu{
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }
+#nav{
+    position: absolute;
+    right: 0px;
+    top: 20px;
+    z-index: 1;
+    min-width: 50px;
+    background-color: #fff;
+    padding: 15px 10px;
+    border-radius: 50px;
+    overflow: hidden;
+    font-family: 'Open Sans', Verdana, Geneva,Tahoma,sans-serif;
+    box-shadow: 0 8px 15px rgba(0,0,0,.2);
+}
+#nav .menu{
+    width: 0;
+    overflow: hidden;
+    transition: 0.5s;
+}
+#nav input:checked ~ .menu{
+    width: 450px;
+}
+#nav input:checked ~ .index{
+    width: 250px;
+}
+#nav .menu li{
+    list-style: none;
+    margin: 0 20px;
+}
+#nav .index li {
+    list-style: none;
+    margin: 0 15px;
+}
+#nav .menu li a{
+    text-decoration: none;
+    color: #666;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: 0.5s;
+}
+#nav .menu li a:hover{
+    color: #161919;
+}
+#nav input{
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    opacity: 0;
+}
+#nav p{
+    position: absolute;
+    left: 20px;
+    width: 30px;
+    height: 4px;
+    border-radius: 50px;
+    background-color: #666666;
+    pointer-events: none;
+    transition: 0.5s;
+}
+#nav input:checked~p{
+    background-color: #f974a1;
+}
+#nav p:nth-child(2){
+    transform: translateY(-8px);
+}
+#nav input:checked~p:nth-child(2){
+    transform: translateY(0) rotate(-45deg);
+}
+#nav p:nth-child(3){
+    transform: translateY(8px);
+}
+#nav input:checked~p:nth-child(3){
+    transform: translateY(0) rotate(45deg);
+}
+
+
 
 /**************************************************   form.php     ****************************************************/
 /********************Body********************/
@@ -58,7 +136,6 @@ body{
 #form main{
     width: 100%;
     height: 570px;
-    position: absolute;
     top: 100px;
 }
 #form .mainbody {
@@ -67,7 +144,7 @@ body{
     display: block;
 }
 #form .middle {
-    top: 50%;
+    top: 55%;
     left: 50%;
     position: absolute;
     transform: translate(-50%, -50%);
@@ -123,32 +200,43 @@ input[type="email"],input[type="tel"],textarea{
 #form .required .tooltip{
     display: none;
     z-index: 1;
-    height: 110px;
     width: 320px;
     position: absolute;
-    top: 130px;
-    padding: 0px 10px;
+    top: 35%;
+    margin: 0px 15px;
 }
 
 #form .required .tooltip .tooltiptext{
-    height: 110px;
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     border-radius: 15px;
-    padding: 10px 20px 35px 20px;
+    padding: 10px 20px 10px 20px;
     position: absolute;
 }
 #form .required .tooltip .tooltiptext li{
     font-family: 'Noto Sans JP', sans-serif;
     text-align: left;
-    margin: 5px 20px;
+    margin: 2px 20px;
 }
 #form .required section .tooltip.tip2 {
-    top: 220px;
+    top: 232px;
 }
 #form .required .tip2 .tooltiptext.tiptext2 {
-    height: 200px;
-    padding: 10px 10px 10px 20px;
+    padding: 10px 10px 10px 10px;
+}
+#form .required .tooltip .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    top: -17%;
+    left: 47%;
+    z-index: 1;
+    margin-left: -5px;
+    border-width: 17px;
+    border-style: solid;
+    border-color: transparent transparent white transparent;
+}
+#form .required .tip1 .tooltiptext::after {
+    top: -23%;
 }
 
 #form .optional input[type="tel"], input[name="SSN"], textarea {
@@ -417,13 +505,153 @@ input[type="email"],input[type="tel"],textarea{
     border-radius: 40px;
     /* background-image: linear-gradient(150deg, #ffe2b6, #fea4a6); */
 }
+/**************************************************   login.php     ****************************************************/
+#login h2{
+    text-align: center;
+}
+
+
+/************************ homepage.php *************************/
+#homepage article {
+    width: 870px;
+    margin: 30px auto;
+    background-color: floralwhite;
+}
+
+#homepage form {
+    margin: 20px auto;
+    padding: 10px;
+    width: 800px;
+    position: relative;
+}
+#homepage form .listbox{
+    border:none;
+    height:50px;
+}
+#homepage form .listbox select.category{
+    position:absolute;
+    z-index:3;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    left:10px;
+    top:5px;
+    text-align:center;
+    background-color: floralwhite;
+    font-size:16px;
+    overflow-y:scroll;
+    height:40px;
+    display:block;
+}
+#homepage form .listbox .category option{
+    text-align:left;
+    overflow-y:scroll;
+}
+
+#homepage form .listbox legend {
+    font-size: 20px;
+    position:absolute;
+    left:30%;
+}
+#homepage form .listbox input.execute {
+    height: 60px;
+    width: 200px;
+    position: absolute;
+    top: 5px;
+    right: -20px;
+    border: none;
+    z-index:1;
+    text-align: center;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 60px;
+    text-transform: uppercase;
+    font-family: 'Noto Sans JP', sans-serif;
+    box-sizing: border-box;
+    background-image: linear-gradient(120deg,#3498db,#2ecc71);
+    border-radius: 30px;
+    box-shadow: 0 10px 10px 0 rgba(0,0,0,0.2), 0 6px 5px 0 rgba(0,0,0,0.2);
+    transition: 1s;
+
+}
+#homepage form .listbox input.execute:hover {
+    cursor: pointer;
+    box-shadow: none;
+    background-image: linear-gradient(240deg,#3498db,#2ecc71);
+    transition: 1s;
+}
+
+
+#homepage form h1 {
+    font-size: 40px;
+    text-align: center;
+    text-transform:capitalize
+}
+
+#homepage article form table {
+    border-collapse: collapse;
+    border: 2px solid;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    margin: 20px;
+}
+
+#homepage form table th {
+    width: 40px;
+    color: black;
+    background-color: #14ecc4;
+}
+
+#homepage form table th,td {
+    text-align: center;
+    word-break: break-word;
+    font-size: 16px;
+    font-family: 'Open Sans', Verdana,sans-serif;
+    border-right: 1px solid;
+}
+#homepage form table input[type="checkbox"] {
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+    opacity: 90%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    z-index: 1;
+}
+#homepage form table th+th {
+    width: 105px;
+}
+
+#homepage form table tr:hover {
+    cursor: pointer;
+}
+#homepage form table tr:nth-child(even) {
+    background-color: #adefff;
+}
+
+#homepage form table tr+tr:nth-child(odd) {
+    background-color: #e1f8be;
+}
+#homepage form table tr:nth-child(even):hover{
+    background-color: #66d0ff;
+}
+#homepage form table tr+tr:nth-child(odd):hover{
+    background-color: #6ce822;
+}
+#homepage form table tr.selected:nth-child(even) {
+    background-color: #66d0ff;
+    text-decoration: line-through;
+}
+#homepage form table tr+tr.selected:nth-child(odd){
+    background-color: #6ce822;
+    text-decoration: line-through;
+}
+
+
 
 /****************** Footer ******************/
 .footer{
-    width: 100%;
     height: 30px;
-    position: absolute;
-    bottom: 0px;
+    /* position: absolute; */
+    /* bottom: 0px; */
+    margin: 40px auto;
 }
 .footer a{
     text-decoration: none;
