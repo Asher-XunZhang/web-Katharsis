@@ -884,7 +884,7 @@ input[type="email"],input[type="tel"],textarea[name="Address"]{
     -16px -16px 50px #e7ffff;
 }
 #shop article h1{
-    font-size:40px;
+    font-size:24px;
     text-align:center;
     position:relative;
     top:20px;
@@ -914,7 +914,7 @@ input[type="email"],input[type="tel"],textarea[name="Address"]{
     -16px -16px 50px #e7ffff;
 }
 #setting article h1{
-    font-size:40px;
+    font-size:24px;
     text-align:center;
     position:relative;
     top:20px;
