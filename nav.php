@@ -29,7 +29,7 @@
                 if (PATH_PARTS['filename'] == 'setting') {
                     print ' class="activePage" ';
                 }
-                print "><a href='shop.php'>Setting</a></li>";
+                print "><a href='setting.php'>Setting</a></li>";
 
                 print '<li ';
                 if (PATH_PARTS['filename'] == 'logout') {

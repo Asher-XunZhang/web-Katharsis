@@ -19,22 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="34ffcdfb-d927-4079-a874-3a31c75aa89b" name="Default Changelist" comment="finish nav, login, logout, check and delete products.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/confirmation.php" beforeDir="false" afterPath="$PROJECT_DIR$/confirmation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/custom.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/form.php" beforeDir="false" afterPath="$PROJECT_DIR$/form.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/homepage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javascript/form.js" beforeDir="false" afterPath="$PROJECT_DIR$/javascript/form.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javascript/homepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/javascript/homepage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/sanatize.php" beforeDir="false" afterPath="$PROJECT_DIR$/lib/sanatize.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/sql.php" beforeDir="false" afterPath="$PROJECT_DIR$/lib/sql.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/validation-functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/lib/validation-functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nav.php" beforeDir="false" afterPath="$PROJECT_DIR$/nav.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sampleSpec.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/top.php" beforeDir="false" afterPath="$PROJECT_DIR$/top.php" afterDir="false" />
-    </list>
+    <list default="true" id="34ffcdfb-d927-4079-a874-3a31c75aa89b" name="Default Changelist" comment="finish the style settings." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -98,7 +83,7 @@
       <workItem from="1606997046286" duration="6924000" />
       <workItem from="1607004444330" duration="1050000" />
       <workItem from="1607005562868" duration="42562000" />
-      <workItem from="1607089817101" duration="6882000" />
+      <workItem from="1607089817101" duration="7203000" />
     </task>
     <task id="LOCAL-00001" summary="update the files;&#10;complete the Registration user-interface">
       <created>1606875206154</created>
@@ -114,7 +99,28 @@
       <option name="project" value="LOCAL" />
       <updated>1606967178257</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="finish the style settings.">
+      <created>1607100825784</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1607100825784</updated>
+    </task>
+    <task id="LOCAL-00004" summary="finish the style settings.">
+      <created>1607100847209</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1607100847209</updated>
+    </task>
+    <task id="LOCAL-00005" summary="finish the style settings.">
+      <created>1607101003966</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1607101003966</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -135,6 +141,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update the files;&#10;complete the Registration user-interface" />
     <MESSAGE value="finish nav, login, logout, check and delete products." />
-    <option name="LAST_COMMIT_MESSAGE" value="finish nav, login, logout, check and delete products." />
+    <MESSAGE value="finish the style settings." />
+    <option name="LAST_COMMIT_MESSAGE" value="finish the style settings." />
   </component>
 </project>
