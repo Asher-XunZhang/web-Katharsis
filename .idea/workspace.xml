@@ -19,18 +19,20 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="34ffcdfb-d927-4079-a874-3a31c75aa89b" name="Default Changelist" comment="update the files;&#10;complete the Registration user-interface">
-      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sshConfigs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
+    <list default="true" id="34ffcdfb-d927-4079-a874-3a31c75aa89b" name="Default Changelist" comment="finish nav, login, logout, check and delete products.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/confirmation.php" beforeDir="false" afterPath="$PROJECT_DIR$/confirmation.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/custom.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/form.php" beforeDir="false" afterPath="$PROJECT_DIR$/form.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/constants.php" beforeDir="false" afterPath="$PROJECT_DIR$/lib/constants.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/homepage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javascript/form.js" beforeDir="false" afterPath="$PROJECT_DIR$/javascript/form.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javascript/homepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/javascript/homepage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/sanatize.php" beforeDir="false" afterPath="$PROJECT_DIR$/lib/sanatize.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/sql.php" beforeDir="false" afterPath="$PROJECT_DIR$/lib/sql.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/validation-functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/lib/validation-functions.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nav.php" beforeDir="false" afterPath="$PROJECT_DIR$/nav.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sampleSpec.docx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/top.php" beforeDir="false" afterPath="$PROJECT_DIR$/top.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,12 +53,16 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
+  </component>
   <component name="ProjectId" id="1l4CrwvD9Lnk3cj7Kt8V51ikZLh" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
@@ -64,7 +70,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../dev-lab5" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -88,7 +94,11 @@
       <updated>1606847178265</updated>
       <workItem from="1606847179315" duration="5000" />
       <workItem from="1606874894624" duration="581000" />
-      <workItem from="1606914722944" duration="48919000" />
+      <workItem from="1606914722944" duration="49187000" />
+      <workItem from="1606997046286" duration="6924000" />
+      <workItem from="1607004444330" duration="1050000" />
+      <workItem from="1607005562868" duration="42562000" />
+      <workItem from="1607089817101" duration="6882000" />
     </task>
     <task id="LOCAL-00001" summary="update the files;&#10;complete the Registration user-interface">
       <created>1606875206154</created>
@@ -97,7 +107,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606875206154</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="finish nav, login, logout, check and delete products.">
+      <created>1606967178257</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1606967178257</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -117,48 +134,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update the files;&#10;complete the Registration user-interface" />
-    <option name="LAST_COMMIT_MESSAGE" value="update the files;&#10;complete the Registration user-interface" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="361" y="70" key="#Deployment" timestamp="1606915049192">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="361" y="70" key="#Deployment/0.0.1536.824@0.0.1536.824" timestamp="1606915049192" />
-    <state x="361" y="70" width="814" height="730" key="#Intentions" timestamp="1606952073274">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="361" y="70" width="814" height="730" key="#Intentions/0.0.1536.824@0.0.1536.824" timestamp="1606952073274" />
-    <state x="515" y="114" key="#SSH_Configurations" timestamp="1606914929955">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="515" y="114" key="#SSH_Configurations/0.0.1536.824@0.0.1536.824" timestamp="1606914929955" />
-    <state x="499" y="158" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1606875074596">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="499" y="158" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1606875074596" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1606945484274">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1606945484274" />
-    <state x="599" y="335" key="NewPhpFileDialog" timestamp="1606940231353">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="599" y="335" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1606940231353" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1606875229931">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1606875229931" />
-    <state x="617" y="310" key="WebDeployment.AddServerDialog.v.1" timestamp="1606914777763">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="617" y="310" key="WebDeployment.AddServerDialog.v.1/0.0.1536.824@0.0.1536.824" timestamp="1606914777763" />
-    <state x="363" y="220" key="ftp.server.browser" timestamp="1606915036038">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="363" y="220" key="ftp.server.browser/0.0.1536.824@0.0.1536.824" timestamp="1606915036038" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1606929299038">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1606929299038" />
+    <MESSAGE value="finish nav, login, logout, check and delete products." />
+    <option name="LAST_COMMIT_MESSAGE" value="finish nav, login, logout, check and delete products." />
   </component>
 </project>

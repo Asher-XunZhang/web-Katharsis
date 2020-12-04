@@ -28,7 +28,6 @@ $expireP=time()+60*60*1*1;//1hour
 if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     $btnSubmit = getPData("btnSubmit");
     if (isset($btnSubmit) && (!empty($btnSubmit))) {
-        $test .= "receive a BTN";
         if ($btnSubmit == "Login") {
             $username = getPData("username");
             $password = getPData("password");

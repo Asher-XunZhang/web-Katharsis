@@ -38,6 +38,24 @@ function checkStrongPassword($testString){
     $regex = "/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/";
     return (preg_match($regex, $testString));
 }
+/*
+ * No letters accepted
+ * No negative numbers accepted
+ * Accept two decimal at most
+ *Do not accept numbers greater than 1 but starting with 0
+ */
+function checkPrice($testString){
+    $regex = "/(^([1-9][0-9]*)+(\.[0-9]{0,2})?$)|(^0+(\.[0-9]{0,2})?$)/";
+    return (preg_match($regex, $testString));
+}
+/*
+ * No letters accepted
+ * Only allow positive integers not starting with 0
+ */
+function checkQuantity($testString){
+    $regex = "/^([1-9][0-9]*)$/";
+    return (preg_match($regex, $testString));
+}
 print PHP_EOL . '<!--  END include validation-functions -->' . PHP_EOL;
 ?>
 

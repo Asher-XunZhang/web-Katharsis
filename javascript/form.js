@@ -56,4 +56,6 @@ window.onload = function () {
             login;
         }
     }
+    /************* fixed the footer on the bottom*************/
+    $("footer").css({"top": $(document.body).outerHeight(true)+"px"});
 }

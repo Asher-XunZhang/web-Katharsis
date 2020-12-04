@@ -32,8 +32,13 @@ function getGData($field){
     if (!isset($_GET[$field])){
         $data="";
     } else {
-        $data = trim($_GET[$field]);
-        $data = htmlspecialchars($data);
+        if($field=="page"){
+            $data = trim($_GET[$field]);
+            $data = (int)htmlentities($$field, ENT_QUOTES, "UTF-8");
+        }else{
+            $data = trim($_GET[$field]);
+            $data = htmlspecialchars($data);
+        }
     }
     return $data;
 }

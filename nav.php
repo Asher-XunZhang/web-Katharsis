@@ -5,7 +5,8 @@
             print "<p></p>";
             print "<p></p>";
             print '<ul class="menu';
-            if ((PATH_PARTS['filename'] != 'form') &&(PATH_PARTS['filename'] != 'login')&&(PATH_PARTS['filename'] != 'confirmation')) {
+            if ((PATH_PARTS['filename'] == 'homepage') ||(PATH_PARTS['filename'] == 'addProducts')
+                ||(PATH_PARTS['filename'] == 'shop') ||(PATH_PARTS['filename'] == 'setting')) {
                 print '">' . PHP_EOL . '<li ';
                 if (PATH_PARTS['filename'] == 'homepage') {
                     print ' class="activePage" ';
@@ -23,6 +24,12 @@
                     print ' class="activePage" ';
                 }
                 print "><a href='shop.php'>Shopping</a></li>";
+
+                print '<li ';
+                if (PATH_PARTS['filename'] == 'setting') {
+                    print ' class="activePage" ';
+                }
+                print "><a href='shop.php'>Setting</a></li>";
 
                 print '<li ';
                 if (PATH_PARTS['filename'] == 'logout') {

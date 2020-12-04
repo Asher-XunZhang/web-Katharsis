@@ -18,3 +18,11 @@ $(document).ready(function(){
         $(this).toggleClass("selected");
     });
 });
+function revise(obj){
+    obj.style.border = "2px solid #3498db";
+};
+
+window.onload=function (){
+    /************* fixed the footer on the bottom*************/
+    $("footer").css({"top": $(document.body).outerHeight(true)+"px"});
+}

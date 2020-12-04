@@ -11,7 +11,7 @@ body{
     min-height: 100vh;
     font-family: 'Noto Sans JP', sans-serif;
     background-image: linear-gradient(120deg,#3498db,#2ecc71);
-    /* width: 100%;*/
+    padding-bottom: 50px;
 }
 /******************** header.php  **************************/
 .header{
@@ -30,8 +30,8 @@ body{
     margin: 0;
     border: none;
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
 }
 .header .text{
     text-decoration: none;
@@ -56,7 +56,7 @@ body{
 }
 #nav{
     position: absolute;
-    right: 0px;
+    right: 0;
     top: 20px;
     z-index: 1;
     min-width: 50px;
@@ -73,7 +73,7 @@ body{
     transition: 0.5s;
 }
 #nav input:checked ~ .menu{
-    width: 450px;
+    width: 550px;
 }
 #nav input:checked ~ .index{
     width: 250px;
@@ -127,7 +127,9 @@ body{
 #nav input:checked~p:nth-child(3){
     transform: translateY(0) rotate(45deg);
 }
-
+#nav li.activePage a{
+    color: #f974a1;
+}
 
 
 /**************************************************   form.php     ****************************************************/
@@ -158,8 +160,8 @@ body{
     background: darkcyan;
     text-align: center;
     border-radius: 40px;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
     display: block;
 }
 
@@ -178,7 +180,7 @@ body{
 }
 
 #form .form-box input[type="text"],input[type="password"],
-input[type="email"],input[type="tel"],textarea{
+input[type="email"],input[type="tel"],textarea[name="Address"]{
     background: none;
     display: block;
     margin: 20px auto;
@@ -203,7 +205,7 @@ input[type="email"],input[type="tel"],textarea{
     width: 320px;
     position: absolute;
     top: 35%;
-    margin: 0px 15px;
+    margin: 0 15px;
 }
 
 #form .required .tooltip .tooltiptext{
@@ -239,10 +241,13 @@ input[type="email"],input[type="tel"],textarea{
     top: -23%;
 }
 
-#form .optional input[type="tel"], input[name="SSN"], textarea {
+#form .optional input[type="tel"], input[name="SSN"], textarea[name="Address"] {
     margin: 22px auto;
 }
-
+#form .optional textarea[name="Address"]{
+    font-family: 'Noto Sans JP', sans-serif;
+    text-transform: capitalize;
+}
 ::placeholder{
     font-family: 'Noto Sans JP', sans-serif;
     text-align: center;
@@ -253,11 +258,13 @@ input[type="email"],input[type="tel"],textarea{
 }
 
 #form .form-box input[type="text"]:focus, input[type="password"]:focus
-, input[type="email"]:focus, input[type="tel"]:focus,textarea:focus{
+, input[type="email"]:focus, input[type="tel"]:focus,textarea[name="Address"]:focus{
     width: 280px;
     border-color: #2ecc71;
 }
-
+#form .form-box input[name="firstname"],input[name="middlename"],input[name="lastname"]{
+    text-transform: capitalize;
+}
 #form .form-box input[type="radio"]:checked + label{
     color: #2ecc71;
 }
@@ -319,7 +326,7 @@ input[type="email"],input[type="tel"],textarea{
 #form fieldset.name {
     margin: 0;
     display: inline-flex;
-    padding: 0px 0px 0px 33px;
+    padding: 0 0 0 33px;
 }
 
 #form .name legend{
@@ -333,11 +340,11 @@ input[type="email"],input[type="tel"],textarea{
 }
 #form .name input[type="text"] {
     width: 50px;
-    margin: 0px 0px 0px 15px;
+    margin: 0 0 0 15px;
 }
 
 #form .gender{
-    padding: 0px 44px;
+    padding: 0 44px;
     margin: 0;
     color: white;
     text-align: left;
@@ -432,7 +439,7 @@ input[type="email"],input[type="tel"],textarea{
 #form .mistakes-header {
     display: block;
     line-height: 40px;
-    padding: 30px 30px 0px 30px;
+    padding: 30px 30px 0 30px;
     color: white;
     text-align: left;
 }
@@ -444,23 +451,23 @@ input[type="email"],input[type="tel"],textarea{
 #form .mistakes-body p {
     font-size: 24px;
     text-align: left;
-    padding: 0px 0px 0px 20px;
+    padding: 0 0 0 20px;
 }
 #form ol {
-    padding: 0px 0px 0px 45px;
+    padding: 0 0 0 45px;
     text-align: left;
 }
 #form li.mistake{
     color: #fdf0c3;
     font-size: 20px;
     font-weight: 800;
-    margin: 15px 0px 10px 0px;
+    margin: 15px 0 10px 0;
 }
 
 #form .mistakes-footer{
     display: block;
     line-height: 40px;
-    padding: 0px 0px 10px 0px;
+    padding: 0 0 10px 0;
     color: white;
 }
 #form .mistakes-footer p {
@@ -470,7 +477,7 @@ input[type="email"],input[type="tel"],textarea{
 /************************************************** confirmation.php **************************************************/
 #confirmation main {
     height: 400px;
-    margin: 100px 100px 0px 100px;
+    margin: 100px 100px 0 100px;
 }
 #confirmation article.confirmed-content {
     height: 400px;
@@ -485,7 +492,7 @@ input[type="email"],input[type="tel"],textarea{
     border-radius: 40px;
 }
 #confirmation article h1 {
-    margin: 30px 20px 0px 20px;
+    margin: 30px 20px 0 20px;
     padding: 40px 20px;
     color: white;
     font-size: 30px;
@@ -495,16 +502,16 @@ input[type="email"],input[type="tel"],textarea{
     color: white;
     font-size: 20px;
 }
-#confirmation article a {
-    text-decoration: none;
-    color: yellow;
-    font-size: 20px;
-    padding: 20px;
-    float: right;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-    border-radius: 40px;
-    /* background-image: linear-gradient(150deg, #ffe2b6, #fea4a6); */
-}
+/*#confirmation article a {*/
+/*    text-decoration: none;*/
+/*    color: yellow;*/
+/*    font-size: 20px;*/
+/*    padding: 20px;*/
+/*    float: right;*/
+/*    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+/*    border-radius: 40px;*/
+/*    !* background-image: linear-gradient(150deg, #ffe2b6, #fea4a6); *!*/
+/*}*/
 /**************************************************   login.php     ****************************************************/
 #login h2{
     text-align: center;
@@ -515,143 +522,454 @@ input[type="email"],input[type="tel"],textarea{
 #homepage article {
     width: 870px;
     margin: 30px auto;
-    background-color: floralwhite;
+    background-color: #bafbfd;
+}
+#homepage article form.category-content h2{
+    position: absolute;
+    z-index: 1;
+    color: steelblue;
+    top: 25px;
+    left: 20px;
+    height: 55px;
+    line-height: 50px;
+    border-radius: 11px;
+    background: linear-gradient(225deg, #c7ffff, #a7e2e4);
+    box-shadow: -9px 9px 12px #8cbcbe, 9px -9px 12px #e9ffff;
+}
+#homepage form.category-content {
+    position: relative;
+    width: 800px;
+    margin: auto;
+    padding: 0 35px;
+    z-index: 1;
+    height: 100px;
+}
+#homepage form.category-content input.btn-category {
+    height: 60px;
+    width: 60px;
+    top: 100px;
+    outline: none;
+    position: absolute;
+    right: 50px;
+    text-align: center;
+    color: black;
+    font-size: 10px;
+    font-weight: 600;
+    font-family: 'Noto Sans JP', sans-serif;
+    border: none;
+    border-radius: 20px;
+    background: linear-gradient(225deg, #c7ffff, #a7e2e4);
+    box-shadow:  -6px 6px 17px #5d7e7f, 6px -6px 17px #ffffff;
 }
 
-#homepage form {
-    margin: 20px auto;
+#homepage form.category-content input.btn-category:hover {
+    cursor: pointer;
+    border-radius: 20px;
+    background: linear-gradient(225deg, #a7e2e4, #c7ffff);
+    box-shadow:  -6px 6px 17px #5d7e7f, 6px -6px 17px #ffffff;
+}
+
+#homepage form.category-content .category{
+    position: absolute;
     padding: 10px;
+    outline: none;
+    border: none;
+    font-size: 30px;
+    z-index: 1;
+    height: 60px;
+    right: 50px;
+    border-radius: 20px;
+    top: 20px;
+    border-radius: 20px;
+    background: #bafbfd;
+    box-shadow: inset -5px 5px 15px #79a3a4, inset 5px -5px 15px #fbffff;
+    transition: 1s;
+}
+#homepage form.category-content .category:hover{
+    cursor:pointer;
+    box-shadow: inset -10px 10px 20px #79a3a4,inset 10px -10px 20px #fbffff;
+}
+
+#homepage form.product-content {
+    margin: auto;
+    padding: 5px 0;
     width: 800px;
     position: relative;
 }
-#homepage form .listbox{
-    border:none;
-    height:50px;
-}
-#homepage form .listbox select.category{
-    position:absolute;
-    z-index:3;
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-    left:10px;
-    top:5px;
-    text-align:center;
-    background-color: floralwhite;
-    font-size:16px;
-    overflow-y:scroll;
-    height:40px;
-    display:block;
-}
-#homepage form .listbox .category option{
-    text-align:left;
-    overflow-y:scroll;
-}
 
-#homepage form .listbox legend {
-    font-size: 20px;
-    position:absolute;
-    left:30%;
-}
-#homepage form .listbox input.execute {
+#homepage form.product-content input.btn-delete {
     height: 60px;
-    width: 200px;
+    width: 60px;
     position: absolute;
-    top: 5px;
-    right: -20px;
+    top: 0;
+    left: 17px;
     border: none;
-    z-index:1;
+    z-index: 2;
     text-align: center;
-    color: #fff;
-    font-size: 24px;
+    color: black;
+    font-size: 10px;
     font-weight: 600;
-    line-height: 60px;
-    text-transform: uppercase;
     font-family: 'Noto Sans JP', sans-serif;
     box-sizing: border-box;
-    background-image: linear-gradient(120deg,#3498db,#2ecc71);
-    border-radius: 30px;
-    box-shadow: 0 10px 10px 0 rgba(0,0,0,0.2), 0 6px 5px 0 rgba(0,0,0,0.2);
+    border-radius: 20px;
     transition: 1s;
-
+    border-radius: 20px;
+    background: linear-gradient(225deg, #c7ffff, #a7e2e4);
+    box-shadow: -6px 6px 17px #5d7e7f, 6px -6px 17px #ffffff;
+    outline: none;
 }
-#homepage form .listbox input.execute:hover {
+#homepage form.product-content input.btn-delete:hover {
     cursor: pointer;
-    box-shadow: none;
-    background-image: linear-gradient(240deg,#3498db,#2ecc71);
-    transition: 1s;
+    border-radius: 20px;
+    background: linear-gradient(225deg, #a7e2e4, #c7ffff);
+    box-shadow:  -6px 6px 17px #5d7e7f, 6px -6px 17px #ffffff;
 }
 
 
-#homepage form h1 {
+#homepage form.product-content h1 {
     font-size: 40px;
     text-align: center;
     text-transform:capitalize
 }
 
-#homepage article form table {
+#homepage article form.product-content table {
     border-collapse: collapse;
     border: 2px solid;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     margin: 20px;
 }
 
-#homepage form table th {
+#homepage form.product-content table th {
     width: 40px;
     color: black;
     background-color: #14ecc4;
 }
 
-#homepage form table th,td {
+#homepage form.product-content table th,td {
     text-align: center;
     word-break: break-word;
     font-size: 16px;
     font-family: 'Open Sans', Verdana,sans-serif;
     border-right: 1px solid;
 }
-#homepage form table input[type="checkbox"] {
+#homepage form.product-content table input[type="checkbox"] {
     cursor: pointer;
-    height: 30px;
-    width: 30px;
-    opacity: 90%;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    display: none;
+    opacity: 0;
     z-index: 1;
 }
-#homepage form table th+th {
+#homepage form.product-content table p{
+    position: absolute;
+    left: 27px;
+    width: 30px;
+    height: 4px;
+    border-radius: 50px;
+    background-color: #666666;
+    pointer-events: none;
+    transition: 0.5s;
+}
+#homepage form.product-content table input:checked~p{
+    background-color: #ffdd00;
+}
+#homepage form.product-content table p:nth-child(2){
+    transform: translateY(-9px);
+}
+#homepage form.product-content table input:checked~p:nth-child(2){
+    transform: translateY(0) rotate(-45deg);
+}
+#homepage form.product-content table p:nth-child(3){
+    transform: translateY(6px);
+}
+#homepage form.product-content table input:checked~p:nth-child(3){
+    transform: translateY(0) rotate(45deg);
+}
+
+#homepage form.product-content table th+th {
     width: 105px;
 }
 
-#homepage form table tr:hover {
+#homepage form.product-content table tr:hover {
     cursor: pointer;
 }
-#homepage form table tr:nth-child(even) {
+#homepage form.product-content table tr:nth-child(even) {
     background-color: #adefff;
 }
 
-#homepage form table tr+tr:nth-child(odd) {
+#homepage form.product-content table tr+tr:nth-child(odd) {
     background-color: #e1f8be;
 }
-#homepage form table tr:nth-child(even):hover{
+#homepage form.product-content table tr:nth-child(even):hover{
     background-color: #66d0ff;
 }
-#homepage form table tr+tr:nth-child(odd):hover{
+#homepage form.product-content table tr+tr:nth-child(odd):hover{
     background-color: #6ce822;
 }
-#homepage form table tr.selected:nth-child(even) {
+#homepage form.product-content table tr.selected:nth-child(even) {
     background-color: #66d0ff;
     text-decoration: line-through;
 }
-#homepage form table tr+tr.selected:nth-child(odd){
+#homepage form.product-content table tr+tr.selected:nth-child(odd){
     background-color: #6ce822;
     text-decoration: line-through;
 }
 
+/******************************** addProducts.php ***************************/
+
+#addProducts main{
+    width: 100%;
+    height: 570px;
+    top: 100px;
+}
+#addProducts article {
+    height: 550px;
+    width: 500px;
+    display: block;
+    top: 55%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+#addProducts form{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: #008b8b;
+    text-align: center;
+    border-radius: 40px;
+    top: 0;
+    left: 0;
+    display: block;
+}
+#addProducts form h1{
+    height: 50px;
+    font-family: 'Noto Sans JP', sans-serif;
+    color: white;
+    text-transform: capitalize;
+    font-weight: 800;
+    font-size: 35px;
+    padding: 10px;
+    border-radius:26px 26px 0 0;
+    background: linear-gradient(315deg, #009595, #007d7d);
+    box-shadow:  -7px -7px 14px #007676, 7px 7px 14px #00a0a0;
+}
+#addProducts form h1.success{
+    color: #eff250;
+}
+#addProducts form h1.error{
+    color: #f56656;
+}
+
+#addProducts form input[type="text"],input[type="number"],textarea[name="Description"]{
+    font-family: 'Noto Sans JP', sans-serif;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    border:none;
+    font-size:18px;
+    padding: 14px 10px;
+    width: 250px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 1s;
+    box-shadow: inset -5px -5px 10px #006868,
+    inset 5px 5px 10px #00aeae;
+    line-height: 25px;
+}
+#addProducts form input[type="text"]:focus, input[type="number"]:focus
+, textarea[name="Description"]:focus{
+    width: 280px;
+    box-shadow:  -5px -5px 10px #006868,
+    5px 5px 10px #00aeae;
+}
+#addProducts form input[type="text"],input[type="number"]{
+    height: 20px;
+    text-align: center;
+}
+
+#addProducts form textarea[name="Description"]{
+    text-align: left;
+    padding:15px 20px
+}
+
+#addProducts form input[type="text"], textarea[name="Description"]{
+    text-transform: capitalize;
+}
+#addProducts form input.input-mistake[type="number"] {
+    border-color: salmon;
+}
+
+#addProducts form .input-mistake:focus{
+    border-color: #2ecc71;
+}
 
 
+
+#addProducts form input[type="submit"]{
+    display: block;
+    text-align: center;
+    padding: 14px 40px;
+    width: 200px;
+    margin:auto;
+    border:none;
+    outline: none;
+    color: white;
+    border-radius: 40px;
+    transition: 1s;
+    cursor: pointer;
+    font-size: 16px;
+    height:60px;
+    background: linear-gradient(315deg, #009595, #007d7d);
+    box-shadow:  -7px -7px 14px #005c5c,
+    7px 7px 14px #00baba;
+}
+#addProducts form input[type="submit"]:hover{
+    background: linear-gradient(315deg, #007d7d, #009595);
+    box-shadow:  -10px -10px 20px #005353,
+    10px 10px 20px #00c3c3;
+}
+
+
+#addProducts form .tooltip{
+    display: none;
+    z-index: 1;
+    width: 320px;
+    position: absolute;
+    margin: 0 78px;
+}
+
+#addProducts form input:focus~.tooltip{
+    display: block;
+}
+
+#addProducts form .tooltip .tooltiptext{
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    border-radius: 15px;
+    padding: 10px 10px 10px 10px;
+    margin: 0 0 0 25px;
+    position: absolute;
+}
+#addProducts form .tooltip .tooltiptext li{
+    font-family: 'Noto Sans JP', sans-serif;
+    text-align: left;
+    margin: 2px 20px;
+}
+
+#addProducts form .tooltip .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    top: -17%;
+    left: 47%;
+    z-index: 1;
+    margin-left: -5px;
+    border-width: 17px;
+    border-style: solid;
+    border-color: transparent transparent white transparent;
+}
+#addProducts form .tip1 .tooltiptext::after {
+    top: -19%;
+}
+#addProducts form .tip2 .tiptext2::after {
+    top: -28%;
+}
+/****************** shop.php *****************/
+#shop article {
+    width: 870px;
+    margin: 30px auto;
+    padding-bottom: 20px;
+    background-color: #bafbfd;
+    border-radius:40px;
+    box-shadow:  16px 16px 50px #8dbfc0,
+    -16px -16px 50px #e7ffff;
+}
+#shop article h1{
+    font-size:40px;
+    text-align:center;
+    position:relative;
+    top:20px;
+    width:100%;
+    margin: 30px auto;
+}
+#shop article p{
+    color: #161919;
+    font-family: 'Noto Sans JP', sans-serif;
+    text-indent:50px;
+    font-size:20px;
+    word-break:break-word;
+    text-align:start;
+    position:relative;
+    top:20px;
+    width:80%;
+    margin: 30px auto;
+}
+/****************** setting.php *****************/
+#setting article {
+    width: 870px;
+    margin: 30px auto;
+    padding-bottom: 20px;
+    background-color: #bafbfd;
+    border-radius:40px;
+    box-shadow:  16px 16px 50px #8dbfc0,
+    -16px -16px 50px #e7ffff;
+}
+#setting article h1{
+    font-size:40px;
+    text-align:center;
+    position:relative;
+    top:20px;
+    width:100%;
+    margin: 30px auto;
+}
+#setting article p{
+    color: #161919;
+    font-family: 'Noto Sans JP', sans-serif;
+    text-indent:50px;
+    font-size:20px;
+    word-break:break-word;
+    text-align:start;
+    position:relative;
+    top:20px;
+    width:80%;
+    margin: 30px auto;
+}
+
+/****************** about.php *****************/
+#about article {
+    width: 870px;
+    margin: 30px auto;
+    padding-bottom: 20px;
+    background-color: #bafbfd;
+    border-radius:40px;
+    box-shadow:  16px 16px 50px #8dbfc0,
+    -16px -16px 50px #e7ffff;
+}
+#about article h1{
+    font-size:40px;
+    text-align:center;
+    position:relative;
+    top:20px;
+    width:100%;
+    margin: 30px auto;
+}
+#about article p{
+    color: #161919;
+    font-family: 'Noto Sans JP', sans-serif;
+    text-indent:50px;
+    font-size:20px;
+    word-break:break-word;
+    text-align:start;
+    position:relative;
+    top:20px;
+    width:80%;
+    margin: 30px auto;
+}
 /****************** Footer ******************/
 .footer{
     height: 30px;
-    /* position: absolute; */
-    /* bottom: 0px; */
-    margin: 40px auto;
+    width: 100%;
+    position: absolute;
+    background: black;
 }
 .footer a{
     text-decoration: none;

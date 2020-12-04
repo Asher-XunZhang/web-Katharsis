@@ -86,7 +86,8 @@ if($_SERVER["REQUEST_METHOD"] == 'GET'){
         print "<main>".PHP_EOL;
         print "<article class='confirmed-content'>".PHP_EOL;
         print "<h1>Congratulation! The account has been successfully activated</h1>".PHP_EOL;
-        print $ConfirmCheckMessage;
+        print "<p>Thank you for taking the time to confirm your registration!</p>";
+        print "<p>You can log into your account now!</p>";
         print "Will jump to the login page in 5 seconds...";
         header('Refresh: 5; url='.BASE_PATH.'form.php');
         print "</article>";

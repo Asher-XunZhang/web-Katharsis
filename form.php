@@ -133,6 +133,11 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
                     }
                 }
             }
+            if(!$nameERROR){
+                $firstname = ucwords(strtolower($firstname));
+                $middlename = ucwords(strtolower($middlename));
+                $lastname = ucwords(strtolower($lastname));
+            }
 
             if ($gender==""){
                 $gender="prefer";
@@ -150,6 +155,9 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
                     $errorMsg[] = "Invalid SSN.";
                     $ssnERROR = true;
                 }
+            }
+            if(!($address=="")){
+                $address = ucwords(strtolower($address));
             }
 
             print PHP_EOL . '<!-- SECTION: 2d Process Form - Passed Validation -->' . PHP_EOL;

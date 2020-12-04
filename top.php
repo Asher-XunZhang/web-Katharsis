@@ -17,19 +17,34 @@ include_once 'lib/constants.php';
     <head>
         <?php
         if ($path_parts['filename'] == "form") {
-            print "<title>Home Page</title>";
+            print "<title>Home</title>";
         }
         if ($path_parts['filename'] == "confirmation") {
             print "<title>Confirmation</title>";
         }
         if ($path_parts['filename'] == "login") {
-            print "<title>Log in</title>";
+            print "<title>Some Problems</title>";
+        }
+        if ($path_parts['filename'] == "homepage") {
+            print "<title>Home Page</title>";
+        }
+        if ($path_parts['filename'] == "addProduct") {
+            print "<title>Add Product</title>";
+        }
+        if ($path_parts['filename'] == "shop") {
+            print "<title>Shop</title>";
+        }
+        if ($path_parts['filename'] == "setting") {
+            print "<title>Information Settings</title>";
+        }
+        if ($path_parts['filename'] == "about") {
+            print "<title>About</title>";
         }
 
         ?>
         <meta charset="utf-8">
         <meta name="author" content="Xun Zhang">
-        <meta name="description" content="read this: http://moz.com/learn/seo/meta-description ">
+        <meta name="description" content="An autonomous trading platform between users. ">
         <!-- see: http://webdesign.tutsplus.com/tutorials/htmlcss-tutorials/quick-tip-dont-forget-the-viewport-meta-tag/ -->
         <link rel="stylesheet" href=<?php print $css_path; ?> type="text/css" media="screen">
         <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -38,7 +53,7 @@ include_once 'lib/constants.php';
         <script type="text/javascript" src='<?php
             if($path_parts['filename'] == "form") {
                 print JS_PATH."/form.js";
-            }elseif($path_parts['filename'] == "homepage"){
+            }else{
                 print JS_PATH."/homepage.js";
             };
         ?>' ></script>

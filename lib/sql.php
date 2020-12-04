@@ -19,16 +19,34 @@ $confirmedQuery = "UPDATE `tblUsers` SET `status` = 1 WHERE `tblUsers`.`UserId` 
 $checkAccountQuery = "SELECT * FROM `tblUsers` WHERE `Username`=?";
 
 
+
+
 /******************** tblUsersInfos ***********************/
 $insertUsersInfosQuery = "INSERT INTO `tblUsersInfos` SET `tblUsersInfos`.`UserId`=?, `FirstName`=?, `MiddleName`=?, `LastName`=?, `Gender`=?, `Telephone`=?, `SSN`=?, `Address`=?";
 
+
+
 /********************* tblProducts and tblProductsInfos *********************/
-//display the table
+/*                                                                         */
+//****************************display the table
+//(BussinessId)
 $displayAllQuery = "SELECT tblProducts.TimeOfAdding AS `Time`,tblProducts.ProductId AS `Id`, tblProductsInfos.ProductName AS `Name`,tblProductsInfos.Category AS `Category`,tblProductsInfos.Price AS `Price`,tblProductsInfos.Quantity AS `Quantity`,tblProductsInfos.Description AS `Description` FROM tblProducts JOIN tblProductsInfos ON tblProducts.ProductId=tblProductsInfos.ProductId WHERE tblProducts.BussinessId = ?";
-$displayProOfCatQuery= "SELECT tblProducts.TimeOfAdding AS `Time`,tblProducts.ProductId AS `Id`, tblProductsInfos.ProductName AS `Name`,tblProductsInfos.Category AS `Category`,tblProductsInfos.Price AS `Price`,tblProductsInfos.Quantity AS `Quantity`,tblProductsInfos.Description AS `Description` FROM tblProducts JOIN tblProductsInfos ON tblProducts.ProductId=tblProductsInfos.ProductId WHERE tblProducts.BussinessId = ? AND tblProductsInfos.Category = ? ";
+//(BussinessId, Category)
+$displayProOfCatQuery= "SELECT tblProducts.TimeOfAdding AS `Time`,tblProducts.ProductId AS `Id`, tblProductsInfos.ProductName AS `Name`,tblProductsInfos.Category AS `Category`,tblProductsInfos.Price AS `Price`,tblProductsInfos.Quantity AS `Quantity`,tblProductsInfos.Description AS `Description` FROM tblProducts JOIN tblProductsInfos ON tblProducts.ProductId=tblProductsInfos.ProductId WHERE tblProducts.BussinessId = ? AND tblProductsInfos.Category = ?";
+//(BussinessId)
 $displayCateQuery= "SELECT DISTINCT tblProductsInfos.Category AS `Category` FROM tblProducts JOIN tblProductsInfos ON tblProducts.ProductId=tblProductsInfos.ProductId WHERE tblProducts.BussinessId = ?";
-//delete the product
+
+//############################delete the product
+//(ProductId)
 $deleteProQuery ="DELETE FROM `tblProducts` WHERE `ProductId`= ? ";
+//############################Count the total number of products
+//(BussinessId)=>the total number of rows
+$countProQuery = "SELECT COUNT(*) FROM tblProducts WHERE tblProducts.BussinessId = ?";
+
+//************************* add products
+//(BussinessId)
+$addProQuery = "INSERT INTO `tblProducts` SET BussinessId = ?";
+$addProInfosQuery = "INSERT INTO `tblProductsInfos` SET `ProductId`= ?, `ProductName`= ?, `Category`= ?, `Price`= ?,`Quantity`= ?, `Description`= ?";
 
 ?>
 
