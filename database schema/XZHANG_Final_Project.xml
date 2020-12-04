@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+- phpMyAdmin XML Dump
+- version 5.0.2
+- https://www.phpmyadmin.net
+-
+- Host: webdb.uvm.edu
+- Generation Time: Dec 04, 2020 at 09:45 AM
+- Server version: 5.6.47-87.0-log
+- PHP Version: 7.2.34
+-->
+
+<pma_xml_export version="1.0" xmlns:pma="https://www.phpmyadmin.net/some_doc_url/">
+    <!--
+    - Structure schemas
+    -->
+    <pma:structure_schemas>
+        <pma:database name="XZHANG_Final_Project" collation="utf8_general_ci" charset="utf8">
+            <pma:table name="tblOrderRecord">
+                CREATE TABLE `tblOrderRecord` (
+                  `ProductID` bigint(20) unsigned NOT NULL,
+                  `CustomerID` int(10) unsigned NOT NULL,
+                  `Quanlity` smallint(4) unsigned NOT NULL,
+                  `DealTime` datetime NOT NULL,
+                  KEY `ProductID` (`ProductID`,`CustomerID`),
+                  KEY `CustomerID` (`CustomerID`),
+                  CONSTRAINT `tblOrderRecord_ibfk_2` FOREIGN KEY (`CustomerID`) REFERENCES `tblUsers` (`UserId`) ON DELETE CASCADE ON UPDATE CASCADE,
+                  CONSTRAINT `tblOrderRecord_ibfk_3` FOREIGN KEY (`ProductID`) REFERENCES `tblProducts` (`ProductId`) ON DELETE CASCADE ON UPDATE CASCADE
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+            </pma:table>
+            <pma:table name="tblProducts">
+                CREATE TABLE `tblProducts` (
+                  `ProductId` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+                  `BussinessId` int(10) unsigned NOT NULL,
+                  `TimeOfAdding` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                  PRIMARY KEY (`ProductId`),
+                  KEY `BussinessId` (`BussinessId`),
+                  CONSTRAINT `tblProducts_ibfk_1` FOREIGN KEY (`BussinessId`) REFERENCES `tblUsers` (`UserId`) ON DELETE CASCADE ON UPDATE CASCADE
+                ) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8;
+            </pma:table>
+            <pma:table name="tblProductsInfos">
+                CREATE TABLE `tblProductsInfos` (
+                  `ProductId` bigint(20) unsigned NOT NULL,
+                  `ProductName` char(50) NOT NULL,
+                  `Category` char(50) NOT NULL,
+                  `Price` decimal(10,2) unsigned NOT NULL COMMENT '$',
+                  `Quantity` smallint(4) unsigned NOT NULL,
+                  `Description` varchar(1000) DEFAULT NULL,
+                  KEY `ProductId` (`ProductId`),
+                  CONSTRAINT `tblProductsInfos_ibfk_1` FOREIGN KEY (`ProductId`) REFERENCES `tblProducts` (`ProductId`) ON DELETE CASCADE ON UPDATE CASCADE
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+            </pma:table>
+            <pma:table name="tblUsers">
+                CREATE TABLE `tblUsers` (
+                  `UserId` int(10) unsigned NOT NULL AUTO_INCREMENT,
+                  `Username` char(20) NOT NULL,
+                  `Password` varchar(300) NOT NULL,
+                  `Email` varchar(100) NOT NULL,
+                  `Balance` int(10) unsigned NOT NULL DEFAULT '0',
+                  `regtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Account activation time',
+                  `status` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT 'Status, 0-not activated, 1-activated',
+                  PRIMARY KEY (`UserId`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
+            </pma:table>
+            <pma:table name="tblUsersInfos">
+                CREATE TABLE `tblUsersInfos` (
+                  `UserId` int(10) unsigned NOT NULL,
+                  `FirstName` char(20) DEFAULT NULL,
+                  `MiddleName` char(20) DEFAULT NULL,
+                  `LastName` char(20) DEFAULT NULL,
+                  `Gender` enum('female','male','prefer') DEFAULT 'prefer',
+                  `Telephone` char(20) DEFAULT NULL,
+                  `SSN` char(20) DEFAULT NULL,
+                  `Address` char(200) DEFAULT NULL,
+                  KEY `UserId` (`UserId`),
+                  CONSTRAINT `tblUsersInfos_ibfk_1` FOREIGN KEY (`UserId`) REFERENCES `tblUsers` (`UserId`) ON DELETE CASCADE ON UPDATE CASCADE
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+            </pma:table>
+        </pma:database>
+    </pma:structure_schemas>
+
+    <!--
+    - Database: 'XZHANG_Final_Project'
+    -->
+    <database name="XZHANG_Final_Project">
+        <!-- Table tblOrderRecord -->
+        <!-- Table tblProducts -->
+        <table name="tblProducts">
+            <column name="ProductId">2</column>
+            <column name="BussinessId">31</column>
+            <column name="TimeOfAdding">2020-12-02 10:08:27</column>
+        </table>
+        <table name="tblProducts">
+            <column name="ProductId">3</column>
+            <column name="BussinessId">31</column>
+            <column name="TimeOfAdding">2020-12-02 11:39:25</column>
+        </table>
+        <table name="tblProducts">
+            <column name="ProductId">4</column>
+            <column name="BussinessId">31</column>
+            <column name="TimeOfAdding">2020-12-02 11:39:25</column>
+        </table>
+        <table name="tblProducts">
+            <column name="ProductId">5</column>
+            <column name="BussinessId">31</column>
+            <column name="TimeOfAdding">2020-12-02 11:39:25</column>
+        </table>
+        <table name="tblProducts">
+            <column name="ProductId">12</column>
+            <column name="BussinessId">31</column>
+            <column name="TimeOfAdding">2020-12-02 17:38:41</column>
+        </table>
+        <table name="tblProducts">
+            <column name="ProductId">13</column>
+            <column name="BussinessId">31</column>
+            <column name="TimeOfAdding">2020-12-02 17:38:41</column>
+        </table>
+        <table name="tblProducts">
+            <column name="ProductId">14</column>
+            <column name="BussinessId">31</column>
+            <column name="TimeOfAdding">2020-12-02 17:38:41</column>
+        </table>
+        <table name="tblProducts">
+            <column name="ProductId">15</column>
+            <column name="BussinessId">31</column>
+            <column name="TimeOfAdding">2020-12-02 17:38:41</column>
+        </table>
+        <table name="tblProducts">
+            <column name="ProductId">16</column>
+            <column name="BussinessId">31</column>
+            <column name="TimeOfAdding">2020-12-02 17:38:41</column>
+        </table>
+        <table name="tblProducts">
+            <column name="ProductId">17</column>
+            <column name="BussinessId">31</column>
+            <column name="TimeOfAdding">2020-12-02 17:38:41</column>
+        </table>
+        <table name="tblProducts">
+            <column name="ProductId">18</column>
+            <column name="BussinessId">31</column>
+            <column name="TimeOfAdding">2020-12-03 07:08:04</column>
+        </table>
+        <table name="tblProducts">
+            <column name="ProductId">19</column>
+            <column name="BussinessId">31</column>
+            <column name="TimeOfAdding">2020-12-03 07:08:04</column>
+        </table>
+        <table name="tblProducts">
+            <column name="ProductId">20</column>
+            <column name="BussinessId">31</column>
+            <column name="TimeOfAdding">2020-12-03 07:08:04</column>
+        </table>
+        <table name="tblProducts">
+            <column name="ProductId">21</column>
+            <column name="BussinessId">31</column>
+            <column name="TimeOfAdding">2020-12-03 07:08:04</column>
+        </table>
+        <table name="tblProducts">
+            <column name="ProductId">28</column>
+            <column name="BussinessId">32</column>
+            <column name="TimeOfAdding">2020-12-03 07:12:16</column>
+        </table>
+        <table name="tblProducts">
+            <column name="ProductId">29</column>
+            <column name="BussinessId">32</column>
+            <column name="TimeOfAdding">2020-12-03 07:12:16</column>
+        </table>
+        <table name="tblProducts">
+            <column name="ProductId">30</column>
+            <column name="BussinessId">32</column>
+            <column name="TimeOfAdding">2020-12-03 07:12:19</column>
+        </table>
+        <table name="tblProducts">
+            <column name="ProductId">31</column>
+            <column name="BussinessId">32</column>
+            <column name="TimeOfAdding">2020-12-03 07:12:19</column>
+        </table>
+        <table name="tblProducts">
+            <column name="ProductId">32</column>
+            <column name="BussinessId">31</column>
+            <column name="TimeOfAdding">2020-12-03 18:31:37</column>
+        </table>
+        <!-- Table tblProductsInfos -->
+        <table name="tblProductsInfos">
+            <column name="ProductId">2</column>
+            <column name="ProductName">Chainsaw Man</column>
+            <column name="Category">Book</column>
+            <column name="Price">18.00</column>
+            <column name="Quantity">99</column>
+            <column name="Description">Excellent</column>
+        </table>
+        <table name="tblProductsInfos">
+            <column name="ProductId">3</column>
+            <column name="ProductName">CalculusIII</column>
+            <column name="Category">Book</column>
+            <column name="Price">20.00</column>
+            <column name="Quantity">99</column>
+            <column name="Description">Difficult</column>
+        </table>
+        <table name="tblProductsInfos">
+            <column name="ProductId">4</column>
+            <column name="ProductName">Tea Cup</column>
+            <column name="Category">Daily necessities</column>
+            <column name="Price">10.00</column>
+            <column name="Quantity">33</column>
+            <column name="Description">Beautiful</column>
+        </table>
+        <table name="tblProductsInfos">
+            <column name="ProductId">5</column>
+            <column name="ProductName">Basketball</column>
+            <column name="Category">Sports</column>
+            <column name="Price">20.00</column>
+            <column name="Quantity">5</column>
+            <column name="Description">Good</column>
+        </table>
+        <table name="tblProductsInfos">
+            <column name="ProductId">12</column>
+            <column name="ProductName">Test1</column>
+            <column name="Category">Test</column>
+            <column name="Price">111.00</column>
+            <column name="Quantity">1</column>
+            <column name="Description">dsfhsdhs</column>
+        </table>
+        <table name="tblProductsInfos">
+            <column name="ProductId">13</column>
+            <column name="ProductName">Test2</column>
+            <column name="Category">Test</column>
+            <column name="Price">1234.00</column>
+            <column name="Quantity">1234</column>
+            <column name="Description">1412341243</column>
+        </table>
+        <table name="tblProductsInfos">
+            <column name="ProductId">14</column>
+            <column name="ProductName">Test3</column>
+            <column name="Category">Test</column>
+            <column name="Price">132.00</column>
+            <column name="Quantity">12</column>
+            <column name="Description">fxgjxgx</column>
+        </table>
+        <table name="tblProductsInfos">
+            <column name="ProductId">15</column>
+            <column name="ProductName">Test4</column>
+            <column name="Category">Test</column>
+            <column name="Price">112.00</column>
+            <column name="Quantity">312</column>
+            <column name="Description">qerw</column>
+        </table>
+        <table name="tblProductsInfos">
+            <column name="ProductId">16</column>
+            <column name="ProductName">Test5</column>
+            <column name="Category">Test</column>
+            <column name="Price">80.00</column>
+            <column name="Quantity">80</column>
+            <column name="Description">wert</column>
+        </table>
+        <table name="tblProductsInfos">
+            <column name="ProductId">17</column>
+            <column name="ProductName">Test6</column>
+            <column name="Category">Test</column>
+            <column name="Price">99.00</column>
+            <column name="Quantity">99</column>
+            <column name="Description">qwehkqwbgfpqwehhwqfpcpqwioehoriqhxwoiqmmpoerhcqowhrhqwxfqlwhfx[qwhhqoizqnwerkqnwkerqweh12h341[32h4oh</column>
+        </table>
+        <table name="tblProductsInfos">
+            <column name="ProductId">18</column>
+            <column name="ProductName">Test18</column>
+            <column name="Category">Test</column>
+            <column name="Price">20.00</column>
+            <column name="Quantity">20</column>
+            <column name="Description">20</column>
+        </table>
+        <table name="tblProductsInfos">
+            <column name="ProductId">19</column>
+            <column name="ProductName">Test19</column>
+            <column name="Category">Test</column>
+            <column name="Price">20.00</column>
+            <column name="Quantity">20</column>
+            <column name="Description">v</column>
+        </table>
+        <table name="tblProductsInfos">
+            <column name="ProductId">20</column>
+            <column name="ProductName">Test20</column>
+            <column name="Category">Test</column>
+            <column name="Price">20.00</column>
+            <column name="Quantity">20</column>
+            <column name="Description">20</column>
+        </table>
+        <table name="tblProductsInfos">
+            <column name="ProductId">21</column>
+            <column name="ProductName">Test21</column>
+            <column name="Category">Test</column>
+            <column name="Price">20.00</column>
+            <column name="Quantity">20</column>
+            <column name="Description">20</column>
+        </table>
+        <table name="tblProductsInfos">
+            <column name="ProductId">28</column>
+            <column name="ProductName">Other1</column>
+            <column name="Category">Test</column>
+            <column name="Price">123.00</column>
+            <column name="Quantity">123</column>
+            <column name="Description">123</column>
+        </table>
+        <table name="tblProductsInfos">
+            <column name="ProductId">29</column>
+            <column name="ProductName">Other2</column>
+            <column name="Category">Test</column>
+            <column name="Price">333.00</column>
+            <column name="Quantity">333</column>
+            <column name="Description">333</column>
+        </table>
+        <table name="tblProductsInfos">
+            <column name="ProductId">30</column>
+            <column name="ProductName">Other3</column>
+            <column name="Category">Test</column>
+            <column name="Price">123.00</column>
+            <column name="Quantity">123</column>
+            <column name="Description">123</column>
+        </table>
+        <table name="tblProductsInfos">
+            <column name="ProductId">31</column>
+            <column name="ProductName">Other4</column>
+            <column name="Category">Tools</column>
+            <column name="Price">777.00</column>
+            <column name="Quantity">777</column>
+            <column name="Description">777</column>
+        </table>
+        <!-- Table tblUsers -->
+        <table name="tblUsers">
+            <column name="UserId">31</column>
+            <column name="Username">xzhang</column>
+            <column name="Password">$2y$10$uHyirnnbnzsZMQz5W2ASlujlR92irlvZGJfr24tm.HSJGH.Gpl/O6</column>
+            <column name="Email">xzhang@uvm.edu</column>
+            <column name="Balance">0</column>
+            <column name="regtime">2020-12-02 08:20:14</column>
+            <column name="status">1</column>
+        </table>
+        <table name="tblUsers">
+            <column name="UserId">32</column>
+            <column name="Username">test123</column>
+            <column name="Password">$2y$10$CbYKOaedmoH4LpgsmqtLfOu90tB6psSJGgAsWem1SvwwRtFGjL9FC</column>
+            <column name="Email">xzhang@uvm.edu</column>
+            <column name="Balance">0</column>
+            <column name="regtime">2020-12-02 14:11:59</column>
+            <column name="status">1</column>
+        </table>
+        <table name="tblUsers">
+            <column name="UserId">33</column>
+            <column name="Username">test5555</column>
+            <column name="Password">$2y$10$Ew4SxrBpxAF7cxo87/PUhe1gNMsakW5Wh31CLUGgjUG7c1IdF7pAy</column>
+            <column name="Email">xzhang@uvm.edu</column>
+            <column name="Balance">0</column>
+            <column name="regtime">2020-12-02 14:50:57</column>
+            <column name="status">1</column>
+        </table>
+        <!-- Table tblUsersInfos -->
+        <table name="tblUsersInfos">
+            <column name="UserId">31</column>
+            <column name="FirstName">Xun</column>
+            <column name="MiddleName"></column>
+            <column name="LastName">Zhang</column>
+            <column name="Gender">male</column>
+            <column name="Telephone">(571)267-0259</column>
+            <column name="SSN"></column>
+            <column name="Address"></column>
+        </table>
+        <table name="tblUsersInfos">
+            <column name="UserId">32</column>
+            <column name="FirstName">Testtt</column>
+            <column name="MiddleName"></column>
+            <column name="LastName">Testtt</column>
+            <column name="Gender">prefer</column>
+            <column name="Telephone"></column>
+            <column name="SSN"></column>
+            <column name="Address"></column>
+        </table>
+        <table name="tblUsersInfos">
+            <column name="UserId">33</column>
+            <column name="FirstName"></column>
+            <column name="MiddleName"></column>
+            <column name="LastName"></column>
+            <column name="Gender">prefer</column>
+            <column name="Telephone"></column>
+            <column name="SSN"></column>
+            <column name="Address"></column>
+        </table>
+    </database>
+</pma_xml_export>
