@@ -36,6 +36,15 @@ $displayProOfCatQuery= "SELECT tblProducts.TimeOfAdding AS `Time`,tblProducts.Pr
 //(BussinessId)
 $displayCateQuery= "SELECT DISTINCT tblProductsInfos.Category AS `Category` FROM tblProducts JOIN tblProductsInfos ON tblProducts.ProductId=tblProductsInfos.ProductId WHERE tblProducts.BussinessId = ?";
 
+/* shop.php */  ##displays all other users' products
+//(BussinessId)
+$displayAllOtrQuery = "SELECT tblProducts.TimeOfAdding AS `Time`,tblProducts.ProductId AS `Id`, tblProductsInfos.ProductName AS `Name`,tblProductsInfos.Category AS `Category`,tblProductsInfos.Price AS `Price`,tblProductsInfos.Quantity AS `Quantity`,tblProductsInfos.Description AS `Description` FROM tblProducts JOIN tblProductsInfos ON tblProducts.ProductId=tblProductsInfos.ProductId WHERE tblProducts.BussinessId != ?";
+//(BussinessId, Category)
+$displayOtrProOfCatQuery= "SELECT tblProducts.TimeOfAdding AS `Time`,tblProducts.ProductId AS `Id`, tblProductsInfos.ProductName AS `Name`,tblProductsInfos.Category AS `Category`,tblProductsInfos.Price AS `Price`,tblProductsInfos.Quantity AS `Quantity`,tblProductsInfos.Description AS `Description` FROM tblProducts JOIN tblProductsInfos ON tblProducts.ProductId=tblProductsInfos.ProductId WHERE tblProducts.BussinessId != ? AND tblProductsInfos.Category = ?";
+//(BussinessId)
+$displayOtrCateQuery= "SELECT DISTINCT tblProductsInfos.Category AS `Category` FROM tblProducts JOIN tblProductsInfos ON tblProducts.ProductId=tblProductsInfos.ProductId WHERE tblProducts.BussinessId != ?";
+
+
 //############################delete the product
 //(ProductId)
 $deleteProQuery ="DELETE FROM `tblProducts` WHERE `ProductId`= ? ";

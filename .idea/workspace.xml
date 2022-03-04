@@ -19,7 +19,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="34ffcdfb-d927-4079-a874-3a31c75aa89b" name="Default Changelist" comment="finish the style settings." />
+    <list default="true" id="34ffcdfb-d927-4079-a874-3a31c75aa89b" name="Default Changelist" comment="finish the style settings.">
+      <change beforePath="$PROJECT_DIR$/.idea/sshConfigs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sshConfigs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/custom.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/sql.php" beforeDir="false" afterPath="$PROJECT_DIR$/lib/sql.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,8 +44,8 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedIndex" value="1" />
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="1l4CrwvD9Lnk3cj7Kt8V51ikZLh" />
   <component name="ProjectViewState">
@@ -55,13 +61,14 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../dev-lab5" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Database.php" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -70,6 +77,9 @@
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\xzhang\AppData\Roaming\Subversion</configuration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="34ffcdfb-d927-4079-a874-3a31c75aa89b" name="Default Changelist" comment="" />
@@ -84,6 +94,27 @@
       <workItem from="1607004444330" duration="1050000" />
       <workItem from="1607005562868" duration="42562000" />
       <workItem from="1607089817101" duration="7203000" />
+      <workItem from="1607101128109" duration="676000" />
+      <workItem from="1610624101665" duration="20000" />
+      <workItem from="1610624140277" duration="599000" />
+      <workItem from="1613972599691" duration="64000" />
+      <workItem from="1613972687903" duration="195000" />
+      <workItem from="1616940468650" duration="3000" />
+      <workItem from="1617139180065" duration="269000" />
+      <workItem from="1617139477109" duration="906000" />
+      <workItem from="1617312103530" duration="672000" />
+      <workItem from="1617641215175" duration="123000" />
+      <workItem from="1617809966790" duration="1389000" />
+      <workItem from="1617817131397" duration="62000" />
+      <workItem from="1625453950113" duration="586000" />
+      <workItem from="1625454746062" duration="3917000" />
+      <workItem from="1625460349821" duration="3251000" />
+      <workItem from="1625554286754" duration="2870000" />
+      <workItem from="1631376596430" duration="1287000" />
+      <workItem from="1632423338255" duration="16000" />
+      <workItem from="1646362524766" duration="87000" />
+      <workItem from="1646362626180" duration="71000" />
+      <workItem from="1646362711455" duration="436000" />
     </task>
     <task id="LOCAL-00001" summary="update the files;&#10;complete the Registration user-interface">
       <created>1606875206154</created>
@@ -120,7 +151,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607101003966</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="fixed the bug in nav">
+      <created>1607101168303</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1607101168303</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -136,12 +174,16 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update the files;&#10;complete the Registration user-interface" />
     <MESSAGE value="finish nav, login, logout, check and delete products." />
     <MESSAGE value="finish the style settings." />
-    <option name="LAST_COMMIT_MESSAGE" value="finish the style settings." />
+    <MESSAGE value="fixed the bug in nav" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed the bug in nav" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

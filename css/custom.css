@@ -873,35 +873,201 @@ input[type="email"],input[type="tel"],textarea[name="Address"]{
 #addProducts form .tip2 .tiptext2::after {
     top: -28%;
 }
+
 /****************** shop.php *****************/
 #shop article {
     width: 870px;
     margin: 30px auto;
-    padding-bottom: 20px;
     background-color: #bafbfd;
-    border-radius:40px;
-    box-shadow:  16px 16px 50px #8dbfc0,
-    -16px -16px 50px #e7ffff;
 }
-#shop article h1{
-    font-size:24px;
-    text-align:center;
-    position:relative;
-    top:20px;
-    width:100%;
-    margin: 30px auto;
+#shop article form.category-content h2{
+    position: absolute;
+    z-index: 1;
+    color: steelblue;
+    top: 25px;
+    left: 20px;
+    height: 55px;
+    line-height: 50px;
+    border-radius: 11px;
+    background: linear-gradient(225deg, #c7ffff, #a7e2e4);
+    box-shadow: -9px 9px 12px #8cbcbe, 9px -9px 12px #e9ffff;
 }
-#shop article p{
-    color: #161919;
+#shop form.category-content {
+    position: relative;
+    width: 800px;
+    margin: auto;
+    padding: 0 35px;
+    z-index: 1;
+    height: 100px;
+}
+#shop form.category-content input.btn-category {
+    height: 60px;
+    width: 60px;
+    top: 100px;
+    outline: none;
+    position: absolute;
+    right: 50px;
+    text-align: center;
+    color: black;
+    font-size: 10px;
+    font-weight: 600;
     font-family: 'Noto Sans JP', sans-serif;
-    text-indent:50px;
-    font-size:20px;
-    word-break:break-word;
-    text-align:start;
-    position:relative;
-    top:20px;
-    width:80%;
-    margin: 30px auto;
+    border: none;
+    border-radius: 20px;
+    background: linear-gradient(225deg, #c7ffff, #a7e2e4);
+    box-shadow:  -6px 6px 17px #5d7e7f, 6px -6px 17px #ffffff;
+}
+
+#shop form.category-content input.btn-category:hover {
+    cursor: pointer;
+    border-radius: 20px;
+    background: linear-gradient(225deg, #a7e2e4, #c7ffff);
+    box-shadow:  -6px 6px 17px #5d7e7f, 6px -6px 17px #ffffff;
+}
+
+#shop form.category-content .category{
+    position: absolute;
+    padding: 10px;
+    outline: none;
+    border: none;
+    font-size: 30px;
+    z-index: 1;
+    height: 60px;
+    right: 50px;
+    border-radius: 20px;
+    top: 20px;
+    background: #bafbfd;
+    box-shadow: inset -5px 5px 15px #79a3a4, inset 5px -5px 15px #fbffff;
+    transition: 1s;
+}
+#shop form.category-content .category:hover{
+    cursor:pointer;
+    box-shadow: inset -10px 10px 20px #79a3a4,inset 10px -10px 20px #fbffff;
+}
+
+#shop form.product-content {
+    margin: auto;
+    padding: 5px 0;
+    width: 800px;
+    position: relative;
+}
+
+#shop form.product-content input.btn-buy, input.btn-cart {
+    height: 60px;
+    width: 60px;
+    position: absolute;
+    top: 0;
+    left: 17px;
+    border: none;
+    z-index: 2;
+    text-align: center;
+    color: black;
+    font-size: 10px;
+    font-weight: 600;
+    font-family: 'Noto Sans JP', sans-serif;
+    box-sizing: border-box;
+    border-radius: 20px;
+    transition: 1s;
+    background: linear-gradient(225deg, #c7ffff, #a7e2e4);
+    box-shadow: -6px 6px 17px #5d7e7f, 6px -6px 17px #ffffff;
+    outline: none;
+}
+#shop form.product-content input.btn-buy:hover, input.btn-cart:hover {
+    cursor: pointer;
+    border-radius: 20px;
+    background: linear-gradient(225deg, #a7e2e4, #c7ffff);
+    box-shadow:  -6px 6px 17px #5d7e7f, 6px -6px 17px #ffffff;
+}
+#shop form.product-content input.btn-cart{
+    top:-80px;
+}
+
+
+#shop form.product-content h1 {
+    font-size: 40px;
+    text-align: center;
+    text-transform:capitalize
+}
+
+#shop article form.product-content table {
+    border-collapse: collapse;
+    border: 2px solid;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    margin: 20px;
+}
+
+#shop form.product-content table th {
+    width: 40px;
+    color: black;
+    background-color: #14ecc4;
+}
+
+#shop form.product-content table th,td {
+    text-align: center;
+    word-break: break-word;
+    font-size: 16px;
+    font-family: 'Open Sans', Verdana,sans-serif;
+    border-right: 1px solid;
+}
+#shop form.product-content table input[type="checkbox"] {
+    cursor: pointer;
+    display: none;
+    opacity: 0;
+    z-index: 1;
+}
+#shop form.product-content table p{
+    position: absolute;
+    left: 27px;
+    width: 30px;
+    height: 4px;
+    border-radius: 50px;
+    background-color: #666666;
+    pointer-events: none;
+    transition: 0.5s;
+}
+#shop form.product-content table input:checked~p{
+    background-color: #ffdd00;
+}
+#shop form.product-content table p:nth-child(2){
+    transform: translateY(-9px);
+}
+#shop form.product-content table input:checked~p:nth-child(2){
+    transform: translateY(0) rotate(-45deg);
+}
+#shop form.product-content table p:nth-child(3){
+    transform: translateY(6px);
+}
+#shop form.product-content table input:checked~p:nth-child(3){
+    transform: translateY(0) rotate(45deg);
+}
+
+#shop form.product-content table th+th {
+    width: 105px;
+}
+
+#shop form.product-content table tr:hover {
+    cursor: pointer;
+}
+#shop form.product-content table tr:nth-child(even) {
+    background-color: #adefff;
+}
+
+#shop form.product-content table tr+tr:nth-child(odd) {
+    background-color: #e1f8be;
+}
+#shop form.product-content table tr:nth-child(even):hover{
+    background-color: #66d0ff;
+}
+#shop form.product-content table tr+tr:nth-child(odd):hover{
+    background-color: #6ce822;
+}
+#shop form.product-content table tr.selected:nth-child(even) {
+    background-color: #66d0ff;
+    text-decoration: line-through;
+}
+#shop form.product-content table tr+tr.selected:nth-child(odd){
+    background-color: #6ce822;
+    text-decoration: line-through;
 }
 /****************** setting.php *****************/
 #setting article {
