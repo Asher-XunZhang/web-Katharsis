@@ -6,3 +6,7 @@ Xun Zhang (Asher)
 
 ### Description
 A simple trading site (features to be improved...)
+
+### Test account
+- uid: test123
+- pwd: Ab123123
